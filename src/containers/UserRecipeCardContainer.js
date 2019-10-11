@@ -16,7 +16,7 @@ export default class UserRecipeCardContainer extends Component {
     
     render(){
         return(
-            <Container fluid>
+            <Container fluid className={"is-flex recipe-card-container"}>
             {this.getRecipeCards()}
             </Container>
         )
