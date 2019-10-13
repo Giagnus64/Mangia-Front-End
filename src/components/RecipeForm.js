@@ -1,55 +1,75 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bulma-components';
-import firebase from "../Firebase/index";
-import FileUploader from "react-firebase-file-uploader";
+// import firebase from "../Firebase/index";
+// import FileUploader from "react-firebase-file-uploader";
 
 const {Field, Control, Label, Input, Textarea, Select, Checkbox, Radio, Help, InputFile  } = Form;
 
+const DEFAULT_STATE = {
+    image: null,
+    progress: 0,
+    title: '',
+    instructions: '',
+    image_url: '',
+    user_submitted: true,
+    ingredients: '',
+    author: ''
+}
+
 export default class RecipeForm extends Component {
     state = {
-       image: null,
-       progress: 0,
-       title: '',
-       instructions: '',
-       page_url: '',
-       image_url: '', 
-       user_submitted: true,
-       ingredients: '',
-       author: ''
+       ...DEFAULT_STATE
     }
 
-    customOnChangeHandler = (event) => {
+    handleRecipeSubmit = (e) => {
+        e.preventDefault();
+        const newObj = {
+            ingredients: this.splitString(),
+            recipe: {
+                title: this.state.title,
+                instructions: this.state.instructions,
+                image_url: this.state.image_url,
+                user_submitted: true
+            }
+        }
+        this.props.submitNewRecipe(newObj)
         this.setState({
-            image: event.target.files[0]
+            ...DEFAULT_STATE
         })
     }
 
-    handleUploadStart = () => {
-        this.setState({
-            isUploading: true, progress: 0
-        })
-    }
+    // customOnChangeHandler = (event) => {
+    //     this.setState({
+    //         image: event.target.files[0]
+    //     })
+    // }
 
-    handleProgress = progress => this.setState({ progress });
+    // handleUploadStart = () => {
+    //     this.setState({
+    //         isUploading: true, progress: 0
+    //     })
+    // }
 
-    handleUploadError = error => {
-        this.setState({ isUploading: false });
-        console.error(error);
-    };
+    // handleProgress = progress => this.setState({ progress });
 
-    handleUploadSuccess = filename => {
-        this.setState({ image: filename, progress: 100, isUploading: false });
-        firebase
-            .storage()
-            .ref("images")
-            .child(filename)
-            .getDownloadURL()
-            .then(url => this.setState({ image_url: url }));
-    };
+    // handleUploadError = error => {
+    //     this.setState({ isUploading: false });
+    //     console.error(error);
+    // };
 
-    startUploadManually = () => {
-        this.fileUploader.startUpload(this.state.image)
-    }
+    // handleUploadSuccess = filename => {
+    //     this.setState({ image: filename, progress: 100, isUploading: false });
+    //     firebase
+    //         .storage()
+    //         .ref("images")
+    //         .child(filename)
+    //         .getDownloadURL()
+    //         .then(url => this.setState({ image_url: url }));
+    // };
+
+    // startUploadManually = () => {
+    //     this.fileUploader.startUpload(this.state.image)
+    // }
 
     handleTextChange = (evt) => {
         this.setState({
@@ -57,9 +77,9 @@ export default class RecipeForm extends Component {
         })
     }
     splitString = () => {
-        const splitIngredients = this.state.ingredients.split("\n")
+        return this.state.ingredients.split("\n")
     }
-
+    
 
     render() {
         return(
@@ -67,7 +87,8 @@ export default class RecipeForm extends Component {
                  <Field>
                     <Label>Recipe Title</Label> 
                     <Control>
-                        <Input placeholder="Recipe Title" />
+                        <Input name="title"placeholder="Recipe Title"
+                            value={this.state.title} onChange={this.handleTextChange} />
                     </Control>
                 </Field>
                 <Field>
@@ -79,11 +100,11 @@ export default class RecipeForm extends Component {
                 <Field>
                 <Label>Instructions</Label>
                 <Control>
-                    <Textarea name="instructions" value={this.state.instructions} onChange={this.handleTextChange} placeholder="Boil noodles for 5 mintues until al dente. Saute veggies for 10 minutes etc... " />
+                    <Textarea name="instructions" value={this.state.instructions} onChange={this.handleTextChange} placeholder="Boil noodles for 5 minutes until al dente. Saute veggies until browned etc... " />
                 </Control>
                 </Field > 
-                <Button onClick={this.splitString}>Woo</Button> 
-                <h2 className="green-text">Upload Recipe Image</h2>
+                <Button onClick={this.handleRecipeSubmit}>Woo</Button> 
+                {/* <h2 className="green-text">Upload Recipe Image</h2>
                 {this.state.image_url !== '' ? <img src={this.state.image_url} alt={this.state.title}></img> : <h3>Img goes here</h3>}
                 <br />
                 <br />
@@ -110,7 +131,7 @@ export default class RecipeForm extends Component {
                     className="btn"
                 >
                     Upload
-            </Button> 
+            </Button>  */}
             </div>
         )
     }

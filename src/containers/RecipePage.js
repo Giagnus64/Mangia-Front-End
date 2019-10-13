@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import fetchUserRecipes from "../actions/fetchUserRecipes";
+import submitNewRecipeToDB from "../actions/submitNewRecipeToDB"
 import UserRecipeCardContainer from './UserRecipeCardContainer';
 import { Section } from "react-bulma-components";
 import RecipeForm from "../components/RecipeForm"
@@ -12,6 +13,12 @@ class RecipePage extends Component{
 
     componentDidMount = () => {
         this.props.getUserRecipes()
+    }
+
+    submitNewRecipe = (recipeObj) => {
+        recipeObj.user_id  = this.props.user_id;
+        recipeObj.recipe.author = this.props.username
+        this.props.submitNewRecipe(recipeObj)
     }
 
     // showRecipes = () => {
@@ -34,7 +41,7 @@ class RecipePage extends Component{
                 <UserRecipeCardContainer user_recipes={this.props.user_recipes} />
             </Section>
             <Section className="recipe-form-section">
-                <RecipeForm />
+                <RecipeForm submitNewRecipe={this.submitNewRecipe} />
             </Section>
             </>
             
@@ -45,14 +52,12 @@ class RecipePage extends Component{
 
 const mapStateToProps = (state, props) => {
 
-    return { user_recipes: state.user_recipes, user_id: state.user_id}
+    return { user_recipes: state.user_recipes, user_id: state.user_id, username: state.username}
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        // loginUser: (user_id) => {
-        //     dispatch({type: "LOGIN_USER", user_id: user_id})
-        // },
-        getUserRecipes: () => dispatch(fetchUserRecipes())
+        getUserRecipes: () => dispatch(fetchUserRecipes()),
+        submitNewRecipe: (recipeObj) => dispatch(submitNewRecipeToDB(recipeObj))
     }
 }
 
