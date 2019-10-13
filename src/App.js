@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <div className="nav"></div>
       <RecipePage />
-      
       <div className="footer"></div>
     </div>
   );

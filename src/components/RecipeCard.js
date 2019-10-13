@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Card, Heading, Content, Icon} from 'react-bulma-components';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons'
 import { faHeart as heartReg } from '@fortawesome/free-regular-svg-icons'

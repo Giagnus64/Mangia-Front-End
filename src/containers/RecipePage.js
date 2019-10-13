@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import fetchUserRecipes from "../actions/fetchUserRecipes";
 import UserRecipeCardContainer from './UserRecipeCardContainer';
 import { Section } from "react-bulma-components";
+import RecipeForm from "../components/RecipeForm"
 
 class RecipePage extends Component{
     state = {
@@ -28,9 +29,14 @@ class RecipePage extends Component{
 
     render(){
         return(
+            <>
             <Section className="recipe-card-section">
                 <UserRecipeCardContainer user_recipes={this.props.user_recipes} />
             </Section>
+            <Section className="recipe-form-section">
+                <RecipeForm />
+            </Section>
+            </>
             
             // <div>{this.showRecipes()}<button onClick={this.loginUserBtn}>Login User</button><div>{this.props.user_id === '' ? "not logged in" : `Logged in as ${this.props.user_id}`}</div></div>
         )
