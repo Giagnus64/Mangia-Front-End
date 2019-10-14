@@ -44,7 +44,7 @@ const RecipeCard = (props) => {
                     {checkInstructions()}
             </Card.Content>  
             <div className={"icon"}>
-                <Icon icon="heart" color="danger">
+                <Icon icon="heart" color="">
                     <FontAwesomeIcon icon={heartReg}/>
                 </Icon>
             </div> 

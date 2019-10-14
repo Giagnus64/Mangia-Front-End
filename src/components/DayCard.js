@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card, Heading} from 'react-bulma-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 
 const DayCard = (props) => {
 
@@ -11,7 +13,11 @@ const DayCard = (props) => {
     const getMeals = (mealString) => {
        const filtered =  props.meals.filter((meal) => {return meal.meal === mealString})
        return filtered.map((meal) => {
-           return <div className="meal-container" key={meal.id}><a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url}>{meal.recipe.title}</a></div>
+           return (<div className="meal-container" key={meal.id}>
+               <a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url}>{meal.recipe.title}
+               </a>
+               <FontAwesomeIcon className="delete-icon-planned-meal"icon={faTimesCircle}></FontAwesomeIcon>
+           </div>)
        })
     }
     
