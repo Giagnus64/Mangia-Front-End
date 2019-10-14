@@ -34,14 +34,32 @@
     margin:0 auto;
 }
 .recipe-form-image-buttons{
-display:flex;
-flex-direction:row;
-justify-content:space-around;
-width:75%;
-margin:0 auto;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    width:75%;
+    margin:0 auto;
 }
 
 progress.progress{
     width:75%;
     margin: 0 auto;
+}
+.day-card{
+    width:30%;
+    min-height: 30%;
+    margin: 10px;
+    
+}
+.day-card-container{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    width:80%;
+    margin:0 auto;
+}
+.title.meal{
+    margin-bottom:10px;
 }
