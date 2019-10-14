@@ -9,8 +9,6 @@ const defaultState = {
 
 const rootReducer = (state = defaultState, action) => {
     switch (action.type) {
-        // case "LOGIN_USER":
-        //     return {...state, user_id: action.user_id}
         case "SUBMIT_NEW_RECIPE":
             return {...state, fetching:true}
 
@@ -22,6 +20,13 @@ const rootReducer = (state = defaultState, action) => {
            
         case "ADD_USER_RECIPES": 
            return {...state, fetching:false, user_recipes: action.user_recipes }
+
+        case "GET_PLANNED_MEALS_REQUEST":
+           return {...state, fetching:true}
+           
+        case "ADD_PLANNED_MEALS": 
+           return {...state, fetching:false, planned_meals: action.planned_meals }
+        
             
         default:
            return state;

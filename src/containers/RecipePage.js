@@ -4,7 +4,7 @@ import fetchUserRecipes from "../actions/fetchUserRecipes";
 import submitNewRecipeToDB from "../actions/submitNewRecipeToDB"
 import UserRecipeCardContainer from './UserRecipeCardContainer';
 import { Section } from "react-bulma-components";
-import RecipeForm from "../components/RecipeForm"
+import RecipeForm from "../components/RecipeForm";
 
 class RecipePage extends Component{
     state = {
@@ -21,19 +21,6 @@ class RecipePage extends Component{
         this.props.submitNewRecipe(recipeObj)
     }
 
-    // showRecipes = () => {
-    //     if(this.props.user_recipes.length === 0){
-    //         return <h3>You have no recipes yet!</h3>
-    //     } else{
-    //         return this.props.user_recipes.map((recipeObj) => {
-    //             return <h1>{recipeObj.recipe.title}</h1>
-    //         })
-    //     }
-    // }
-    // loginUserBtn = () => {
-    //     this.props.loginUser(1)
-    // }
-
     render(){
         return(
             <>
@@ -45,7 +32,6 @@ class RecipePage extends Component{
             </Section>
             </>
             
-            // <div>{this.showRecipes()}<button onClick={this.loginUserBtn}>Login User</button><div>{this.props.user_id === '' ? "not logged in" : `Logged in as ${this.props.user_id}`}</div></div>
         )
     }
 }
