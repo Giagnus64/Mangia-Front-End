@@ -9,7 +9,7 @@ const DEFAULT_STATE = {
     progress: 0,
     title: '',
     instructions: '',
-    image_url: '',
+    image_url: null,
     user_submitted: true,
     ingredients: '',
     author: ''
@@ -22,19 +22,33 @@ export default class RecipeForm extends Component {
     //************************ FORM SUBMISSION */
     handleRecipeSubmit = (e) => {
         e.preventDefault();
+        let confirmed;
+        let recipeObj;
+        if(!this.state.image_url){
+            confirmed = window.confirm("You have not uploaded an image! Would you still like to submit your recipe? (A default image will be used.")
+        } else {
+            confirmed = true;
+        }
+
+        if(confirmed){
+            recipeObj = this.getNewRecipeObject();
+            this.props.submitNewRecipe(recipeObj)
+            this.setState({
+                ...DEFAULT_STATE
+            })
+        }
+    }
+    getNewRecipeObject = () => {
         const newObj = {
             ingredients: this.splitString(),
             recipe: {
                 title: this.state.title,
                 instructions: this.state.instructions,
-                image_url: this.state.image_url,
                 user_submitted: true
             }
         }
-        this.props.submitNewRecipe(newObj)
-        this.setState({
-            ...DEFAULT_STATE
-        })
+        if(this.state.image_url) {newObj.image_url = this.state.image_url} 
+        return newObj
     }
 
     handleTextChange = (evt) => {
@@ -80,7 +94,7 @@ export default class RecipeForm extends Component {
     // }
 
     getImage = () => {
-        if(this.state.image_url !== ''){
+        if(this.state.image_url){
             return(<Image size={300} src={this.state.image_url} alt={this.state.title}></Image>)
         } else if( this.state.progress > 0 && this.state.progress < 100){
             return (<h3>Loading...</h3>)
