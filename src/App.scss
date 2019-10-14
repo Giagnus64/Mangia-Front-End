@@ -1,5 +1,6 @@
 .recipe-card{
-    width: 33%;
+    min-width: 20%;
+    max-width: 20%;
     margin: 10px;
 }
 .recipe-card-container{
@@ -10,4 +11,40 @@
 }
 div.card-content{
     
+}
+.recipe-form-container{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    margin-bottom: 20px;
+}
+.recipe-form-inputs{
+    width: 70%;
+}
+
+.recipe-form-img-upload{
+    width: 25%
+}
+
+.recipe-form-title{
+    width:100%
+}
+.recipe-form-img-box{
+    width:300px;
+    height:220px;
+    text-align:center;
+    margin:0 auto;
+}
+.recipe-form-image-buttons{
+display:flex;
+flex-direction:row;
+justify-content:space-around;
+width:75%;
+margin:0 auto;
+}
+.recipe-form-submit{
+}
+progress.progress{
+    width:75%;
+    margin: 0 auto;
 }

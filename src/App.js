@@ -5,7 +5,7 @@ import "./App.scss";
 import NavigationBar from "./components/Navbar";
 
 function App() {
-
+  
   return (
     <>
     <NavigationBar/>
