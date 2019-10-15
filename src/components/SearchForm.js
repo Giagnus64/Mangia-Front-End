@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Section, Button, Heading } from 'react-bulma-components'
-const { Field, Control, Label, Select, Input } = Form;
+const { Field, Control, Label, Input } = Form;
 
 class SearchForm extends Component{
 

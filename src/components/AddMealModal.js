@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Form, Modal, Section, Button } from 'react-bulma-components'
+import DateForm from "../components/DateForm";
+import { Form, Modal, Section, Button, Heading } from 'react-bulma-components'
 const { Field, Control, Label, Select } = Form;
 
-const DEFAULT_STATE = {
-    meal: '',
-    recipe_id: '',
-}
-class AddMealModal extends Component {
 
+class AddMealModal extends Component {
+    
     state = {
-       ...DEFAULT_STATE,
-       date: this.props.date.toISOString()
+       meal: '',
+       recipe_id: this.props.recipeId ? this.props.recipeId : null,
+       date: this.props.date ? this.props.date.toISOString() : null
     }
 
     changeSelect = (e) => {
@@ -28,22 +27,44 @@ class AddMealModal extends Component {
             </>
         )
     }
+    getTitle = () => {
+        if(this.props.date){
+            return `Add Meal To ${this.props.date.toDateString()}`
+        } else{
+            return `Add Meal`
+        }
+        
+    }
+    getProperField = () => {
+        if(this.props.userRecipeOptions){
+            return (<Field>
+                <Label>Select Recipe</Label>
+                <Control>
+                    <Select name="recipe_id" value={this.state.recipe_id} onChange={this.changeSelect}>
+                        <option key="p" value="">Select a Recipe</option>
+                        {this.props.userRecipeOptions}
+                    </Select>
+                </Control>
+            </Field>)
+        } else{
+            return (<label>Date:<DateForm updateEnteredDate={this.updateEnteredDate} /></label>)
+        }
+    }
+    updateEnteredDate = (day) => {
+        this.setState({
+            date: day.toISOString()
+        })
+    }
+
  
 
     render(){
+        console.log(this.props, this.props.date)
         return (
                 <Modal.Content>
                     <Section style={{backgroundColor:'white'}}>
-                    <h1>{`Add Meal To ${this.props.date.toDateString()}`}</h1>
-                    <Field>
-                        <Label>Select Recipe</Label>
-                        <Control>
-                            <Select name="recipe_id" value={this.state.recipe_id} onChange={this.changeSelect}>
-                                <option key="p" value="">Select a Recipe</option>
-                                {this.props.userRecipeOptions}
-                            </Select>
-                        </Control>
-                    </Field>
+                    <Heading>{this.getTitle()}</Heading>
+                    {this.getProperField()}
                     <Field>
                         <Label>Select Meal Time</Label>
                         <Control>

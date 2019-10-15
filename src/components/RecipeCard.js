@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Card, Heading, Content, Icon, Button} from 'react-bulma-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +8,7 @@ import { faHeart as heartReg } from '@fortawesome/free-regular-svg-icons'
 
 
 const RecipeCard = (props) => {
-    console.log(props);
+    
     const checkInstructions = () => {
         if(props.recipe.instructions){
             return (
@@ -27,10 +27,17 @@ const RecipeCard = (props) => {
         }
     }
     const getButtons = () => {
-        let buttons;
         if (props.parentPage === "recipe_page"){
-            return true
-
+            return (<></>)
+        } else{
+            return (<Button onClick={() => props.openModal(props.recipe.id)}className="search-results-recipe-card-button">Add Meal</Button>)
+        }
+    }
+    const getIcon = () => {
+        if(props.isFavorited){
+            return heartSolid;
+        } else{
+            return heartReg;
         }
     }
 
@@ -44,11 +51,11 @@ const RecipeCard = (props) => {
                     {checkInstructions()}
             </Card.Content>  
             <div className={"icon"}>
-                <Icon icon="heart" color="">
-                    <FontAwesomeIcon icon={heartReg}/>
+                <Icon icon="heart">
+                    <FontAwesomeIcon icon={getIcon()}/>
                 </Icon>
             </div> 
-            
+            {getButtons()}
         </Card>
     )
 }

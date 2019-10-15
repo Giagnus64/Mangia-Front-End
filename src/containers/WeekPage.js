@@ -31,7 +31,7 @@ class WeekPage extends Component{
 
     render(){
         return (<>
-        <SearchContainer getSearchResults={this.props.getSearchResults}/>
+        <SearchContainer addRecipeToDay={this.addRecipeToDay} getSearchResults={this.props.getSearchResults}/>
         <DayCardContainer planned_meals={this.props.planned_meals} deletePlannedMeal={this.props.deletePlannedMeal} userRecipeOptions={this.userRecipeOptions()} addRecipeToDay={this.addRecipeToDay}/></>
         )
     }

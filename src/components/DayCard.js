@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Heading, Button, Modal} from 'react-bulma-components';
+import { Card, Heading, Button} from 'react-bulma-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
@@ -27,8 +27,6 @@ const DayCard = (props) => {
     }
 
     const handleDeleteClick = (e, mealID) => {
-        const meal = e.target;
-        
         let confirmed = window.confirm(`Are you sure you want to delete this meal?`)
         if(confirmed){
             props.deletePlannedMeal(mealID)

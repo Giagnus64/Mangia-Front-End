@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { format, addDays } from 'date-fns'
 import DayCard from "../components/DayCard"
-import DayPickerInput from 'react-day-picker/DayPickerInput';
+
 import { Button, Modal } from 'react-bulma-components';
 import AddMealModal from "../components/AddMealModal";
+import DateForm from "../components/DateForm";
 
 import 'react-day-picker/lib/style.css';
 
@@ -19,12 +20,12 @@ class DayCardContainer extends Component {
         modalDate: '',
     }
 
-    handleDayClick = (day) => {
-        let dayToChange = day
+    updateEnteredDate = (date) => {
         this.setState({
-            dateEntered: dayToChange
+            dateEntered: date,
         })
     }
+
     updateStartDate = () => {
         this.setState({
             startDate: this.state.dateEntered,
@@ -69,19 +70,20 @@ class DayCardContainer extends Component {
         return (
             <>
             <div className="day-picker-container">
-            <DayPickerInput 
+            {/* <DayPickerInput 
             initialMonth={today}id="day-picker-input"
             dayPickerProps={{
                 disabledDays:
                 {before: today}
             }}
             value={this.state.dateEntered}
-            onDayChange={day => this.handleDayClick(day)}/>
+            onDayChange={day => this.handleDayClick(day)}/> */}
+            <DateForm today={today} updateEnteredDate={this.updateEnteredDate} />
             <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
             </div>
             <div className="day-card-container">{this.getDayCards()}</div>
             <Modal show={this.state.modalOpen} onClose={this.closeModal}>
-                    <AddMealModal date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModalyty}/>
+                    <AddMealModal date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal}/>
             </Modal>
             </>
         )

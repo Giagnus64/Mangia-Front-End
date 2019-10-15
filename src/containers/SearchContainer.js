@@ -23,7 +23,7 @@ class SearchContainer extends Component{
 
     render(){
         return(<>
-            {this.state.resultsDisplay ? <SearchResultsContainer showSearchForm={this.showSearchForm}/> : <SearchForm getSearchResults={this.props.getSearchResults} showSearchResults={this.showSearchResults}/>}
+            {this.state.resultsDisplay ? <SearchResultsContainer addRecipeToDay={this.props.addRecipeToDay}showSearchForm={this.showSearchForm}/> : <SearchForm getSearchResults={this.props.getSearchResults} showSearchResults={this.showSearchResults}/>}
             </>
             )
     }
