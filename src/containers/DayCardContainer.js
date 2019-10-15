@@ -35,14 +35,16 @@ class DayCardContainer extends Component {
         for(let i = 0; i < 7; i++){
             let cardDate = addDays(this.state.startDate, i)
             let meals = this.checkPlannedMeals(format(cardDate, "yyyy-MM-dd"));
-            cardArray.push(<DayCard cardDate={cardDate} meals={meals} key={i}/>)
+            cardArray.push(<DayCard cardDate={cardDate} meals={meals} key={i} deletePlannedMeal={this.props.deletePlannedMeal}/>)
         }
         return cardArray;
     }
 
+    deletePlannedMeal
+
 
     render () {
-        console.log(this.props)
+        //console.log(this.props)
  
         return (
             <>
@@ -54,7 +56,7 @@ class DayCardContainer extends Component {
                 {before: today}
             }}
             onDayChange={day => this.handleDayClick(day)}/>
-            <Button color="submit">Select Start Date</Button>
+            <Button color="info">Select Start Date</Button>
             </div>
             <div className="day-card-container">{this.getDayCards()}</div>
             </>

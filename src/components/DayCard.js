@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, Heading} from 'react-bulma-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimesCircle} from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 const DayCard = (props) => {
 
-    console.log(props)
+    //console.log(props)
     
     const formatDate = () => {
         return props.cardDate.toDateString();
@@ -14,11 +14,24 @@ const DayCard = (props) => {
        const filtered =  props.meals.filter((meal) => {return meal.meal === mealString})
        return filtered.map((meal) => {
            return (<div className="meal-container" key={meal.id}>
-               <a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url}>{meal.recipe.title}
+               <a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url}>{meal.recipe.title} 
                </a>
-               <FontAwesomeIcon className="delete-icon-planned-meal"icon={faTimesCircle}></FontAwesomeIcon>
+               <FontAwesomeIcon className="delete-icon-planned-meal"
+               icon={faTimesCircle}
+               onClick={(e) => handleDeleteClick(e, meal.id)}>
+
+               </FontAwesomeIcon>
            </div>)
        })
+    }
+
+    const handleDeleteClick = (e, mealID) => {
+        const meal = e.target;
+        
+        let confirmed = window.confirm(`Are you sure you want to delete this meal?`)
+        if(confirmed){
+            props.deletePlannedMeal(mealID)
+        }
     }
     
     

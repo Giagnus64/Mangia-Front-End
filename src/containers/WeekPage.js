@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DayCardContainer from './DayCardContainer';
 import fetchPlannedMeals from "../actions/fetchPlannedMeals";
 import fetchUserRecipes from "../actions/fetchUserRecipes";
+import deletePlannedMeal from "../actions/deletePlannedMeal";
 
 class WeekPage extends Component{
 
@@ -21,7 +22,7 @@ class WeekPage extends Component{
     
     render(){
         return (
-        <DayCardContainer planned_meals={this.props.planned_meals}/>
+        <DayCardContainer planned_meals={this.props.planned_meals} deletePlannedMeal={this.props.deletePlannedMeal}/>
         )
     }
 }
@@ -35,6 +36,7 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         getPlannedMeals: () => dispatch(fetchPlannedMeals()),
         getUserRecipes: () => dispatch(fetchUserRecipes()),
+        deletePlannedMeal: (mealID) => dispatch(deletePlannedMeal(mealID)),
         
     }
 }
