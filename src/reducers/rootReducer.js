@@ -26,8 +26,10 @@ const rootReducer = (state = defaultState, action) => {
            
         case "ADD_PLANNED_MEALS": 
            return {...state, fetching:false, planned_meals: action.planned_meals }
+
         case "DELETE_PLANNED_MEAL_FROM_DB":
             return {...state, fetching:true}
+            
         case "DELETE_PLANNED_MEAL_FROM_STORE":
             return {...state, fetching:false, planned_meals: state.planned_meals.filter((meal) => meal.id !== action.mealToDelete)}
             

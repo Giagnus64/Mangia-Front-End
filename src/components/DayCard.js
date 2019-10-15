@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Heading} from 'react-bulma-components';
+import { Card, Heading, Button, Modal} from 'react-bulma-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 const DayCard = (props) => {
+
 
     //console.log(props)
     
@@ -46,6 +47,9 @@ const DayCard = (props) => {
                 <Heading className={"meal"} size={6}>Dinner</Heading>
                 {getMeals('Dinner')}
         </Card.Content>
+        <div className="day-card-button-container">
+                <Button className="day-card-add-meal-btn" onClick={props.openModal}>Add Meal</Button>
+        </div>
     </Card>)
 
 }

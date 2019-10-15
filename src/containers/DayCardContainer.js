@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { format, addDays } from 'date-fns'
 import DayCard from "../components/DayCard"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { Button } from 'react-bulma-components';
+import { Button, Modal } from 'react-bulma-components';
+import AddMealModal from "../components/AddMealModal";
 
 import 'react-day-picker/lib/style.css';
 
@@ -13,13 +14,22 @@ class DayCardContainer extends Component {
 
     state = {
         startDate: today,
-        dateEntered: ''
+        dateEntered: '',
+        modalOpen: false,
+        modalDate: '',
     }
 
     handleDayClick = (day) => {
+        let dayToChange = day
         this.setState({
-            dateEntered: day
-        }, console.log(this.state))
+            dateEntered: dayToChange
+        })
+    }
+    updateStartDate = () => {
+        this.setState({
+            startDate: this.state.dateEntered,
+            dateEntered: '',
+        })
     }
 
     //check for meals on that date
@@ -35,12 +45,21 @@ class DayCardContainer extends Component {
         for(let i = 0; i < 7; i++){
             let cardDate = addDays(this.state.startDate, i)
             let meals = this.checkPlannedMeals(format(cardDate, "yyyy-MM-dd"));
-            cardArray.push(<DayCard cardDate={cardDate} meals={meals} key={i} deletePlannedMeal={this.props.deletePlannedMeal}/>)
+            cardArray.push(<DayCard cardDate={cardDate} meals={meals} key={i} deletePlannedMeal={this.props.deletePlannedMeal} openModal={this.openModal}/>)
         }
         return cardArray;
     }
+    openModal = () => {
+        this.setState({
+            modalOpen:true,
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            modalOpen: false
+        })
+    }
 
-    deletePlannedMeal
 
 
     render () {
@@ -55,12 +74,16 @@ class DayCardContainer extends Component {
                 disabledDays:
                 {before: today}
             }}
+            value={this.state.dateEntered}
             onDayChange={day => this.handleDayClick(day)}/>
-            <Button color="info">Select Start Date</Button>
+            <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
             </div>
             <div className="day-card-container">{this.getDayCards()}</div>
+            <Modal show={this.state.modalOpen} onClose={this.closeModal}>
+                    <AddMealModal />
+            </Modal>
             </>
-        );
+        )
         
     }
 }
