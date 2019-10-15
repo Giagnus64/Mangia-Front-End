@@ -81,7 +81,7 @@ class DayCardContainer extends Component {
             </div>
             <div className="day-card-container">{this.getDayCards()}</div>
             <Modal show={this.state.modalOpen} onClose={this.closeModal}>
-                    <AddMealModal date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal}/>
+                    <AddMealModal date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModalyty}/>
             </Modal>
             </>
         )

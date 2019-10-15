@@ -5,7 +5,8 @@ import fetchPlannedMeals from "../actions/fetchPlannedMeals";
 import fetchUserRecipes from "../actions/fetchUserRecipes";
 import deletePlannedMeal from "../actions/deletePlannedMeal";
 import addPlannedMeal from '../actions/addPlannedMeal';
-import RecipeCard from '../components/RecipeCard';
+import searchByIngredient from '../actions/searchByIngredient';
+import SearchContainer from './SearchContainer';
 
 class WeekPage extends Component{
 
@@ -16,7 +17,6 @@ class WeekPage extends Component{
 
     addRecipeToDay = (mealObj) =>  {
         mealObj.user_id = this.props.user_id
-        console.log(mealObj);
         this.props.addRecipeToDay(mealObj);
     }
 
@@ -30,8 +30,9 @@ class WeekPage extends Component{
     }    
 
     render(){
-        return (
-        <DayCardContainer planned_meals={this.props.planned_meals} deletePlannedMeal={this.props.deletePlannedMeal} userRecipeOptions={this.userRecipeOptions()} addRecipeToDay={this.addRecipeToDay}/>
+        return (<>
+        <SearchContainer getSearchResults={this.props.getSearchResults}/>
+        <DayCardContainer planned_meals={this.props.planned_meals} deletePlannedMeal={this.props.deletePlannedMeal} userRecipeOptions={this.userRecipeOptions()} addRecipeToDay={this.addRecipeToDay}/></>
         )
     }
 }
@@ -46,7 +47,8 @@ const mapDispatchToProps = (dispatch, props) => {
         getPlannedMeals: () => dispatch(fetchPlannedMeals()),
         getUserRecipes: () => dispatch(fetchUserRecipes()),
         deletePlannedMeal: (mealID) => dispatch(deletePlannedMeal(mealID)),
-        addRecipeToDay: (mealObj) => dispatch(addPlannedMeal(mealObj))
+        addRecipeToDay: (mealObj) => dispatch(addPlannedMeal(mealObj)),
+        getSearchResults: (search_query) => dispatch(searchByIngredient(search_query))
         
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Modal, Section, Button } from 'react-bulma-components'
-const { Field, Control, Label, Input, Textarea, Select } = Form;
+const { Field, Control, Label, Select } = Form;
 
 const DEFAULT_STATE = {
     meal: '',

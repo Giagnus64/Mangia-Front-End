@@ -4,7 +4,8 @@ const defaultState = {
     username: 'bob',
     user_recipes: [], 
     planned_meals: [],
-    fetching: false
+    fetching: false,
+    search_results: [],
 }
 
 const rootReducer = (state = defaultState, action) => {
@@ -38,6 +39,12 @@ const rootReducer = (state = defaultState, action) => {
             
         case "DELETE_PLANNED_MEAL_FROM_STORE":
             return {...state, fetching:false, planned_meals: state.planned_meals.filter((meal) => meal.id !== action.mealToDelete)}
+
+        case "SEARCH_RECIPE_DATABASE":
+            return { ...state, fetching: true }
+
+        case "ADD_SEARCH_RESULTS":
+            return { ...state, fetching: false, search_results: action.search_results }
             
         default:
            return state;
