@@ -48,7 +48,7 @@ const DayCard = (props) => {
                 {getMeals('Dinner')}
         </Card.Content>
         <div className="day-card-button-container">
-                <Button className="day-card-add-meal-btn" onClick={props.openModal}>Add Meal</Button>
+                <Button className="day-card-add-meal-btn" onClick={() => {props.openModal(props.cardDate)}}>Add Meal</Button>
         </div>
     </Card>)
 

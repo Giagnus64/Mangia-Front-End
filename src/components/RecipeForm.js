@@ -89,9 +89,6 @@ export default class RecipeForm extends Component {
             .then(url => this.setState({ image_url: url }));
     };
 
-    // startUploadManually = () => {
-    //     this.fileUploader.startUpload(this.state.image)
-    // }
 
     getImage = () => {
         if(this.state.image_url){
@@ -103,8 +100,6 @@ export default class RecipeForm extends Component {
         }
     }
 
-    
-    
 
     render() {
         return(
@@ -119,7 +114,7 @@ export default class RecipeForm extends Component {
                         </div>
                         <br></br>
                         <div className="recipe-form-image-buttons">
-                        <label className="recipe-form-image-upload-select-button  button is-primary">
+                        <label className="recipe-form-image-upload-select-button button is-primary">
                             Select A Recipe Image
                             <FileUploader
                                 hidden
@@ -130,16 +125,8 @@ export default class RecipeForm extends Component {
                                 onUploadError={this.handleUploadError}
                                 onUploadSuccess={this.handleUploadSuccess}
                                 onProgress={this.handleProgress}
-                                // onChange={this.customOnChangeHandler}
-                                //ref={inst => { this.fileUploader = inst }}
                             />
                         </label>
-                        <Button
-                            onClick={this.startUploadManually}
-                            className="recipe-form-image-upload-button btn has-text-centered"
-                        >
-                            Upload
-                        </Button>
                         </div>
                     </div>
                     <div className="recipe-form-inputs">
