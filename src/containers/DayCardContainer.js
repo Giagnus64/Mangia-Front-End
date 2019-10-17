@@ -6,7 +6,7 @@ import { Button, Modal } from 'react-bulma-components';
 import AddMealModal from "../components/AddMealModal";
 import DateForm from "../components/DateForm";
 
-import 'react-day-picker/lib/style.css';
+
 
 //fix for pushing out
 let today = new Date(2019,9,12)
@@ -70,14 +70,6 @@ class DayCardContainer extends Component {
         return (
             <>
             <div className="day-picker-container">
-            {/* <DayPickerInput 
-            initialMonth={today}id="day-picker-input"
-            dayPickerProps={{
-                disabledDays:
-                {before: today}
-            }}
-            value={this.state.dateEntered}
-            onDayChange={day => this.handleDayClick(day)}/> */}
             <DateForm today={today} updateEnteredDate={this.updateEnteredDate} />
             <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
             </div>

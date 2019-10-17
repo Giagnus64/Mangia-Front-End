@@ -107,3 +107,22 @@ svg{
     display: flex;
     flex-direction:row;
 }
+.search-results-cards{
+    overflow-x: scroll;
+    padding: 1rem;
+}
+.search-container{
+    width: 80%;
+    margin:0 auto;
+    text-align:center;
+}
+.control{
+    text-align:center;
+}
+.search-form input{
+    width:60%;
+    margin:0 auto;
+}
+.search-form{
+    padding:1.5rem;
+}

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import fetchUserRecipes from "../actions/fetchUserRecipes";
-import submitNewRecipeToDB from "../actions/submitNewRecipeToDB"
+import submitNewRecipeToDB from "../actions/submitNewRecipeToDB";
+import addUserRecipe from "../actions/addUserRecipe";
+import deleteUserRecipe from "../actions/deleteUserRecipe";
 import UserRecipeCardContainer from './UserRecipeCardContainer';
 import { Section } from "react-bulma-components";
 import RecipeForm from "../components/RecipeForm";
@@ -25,7 +27,10 @@ class RecipePage extends Component{
         return(
             <>
             <Section className="recipe-card-section">
-                <UserRecipeCardContainer user_recipes={this.props.user_recipes} />
+                <UserRecipeCardContainer 
+                user_recipes={this.props.user_recipes}
+                addUserRecipe={this.props.addUserRecipe}
+                deleteUserRecipe={this.props.deleteUserRecipe} />
             </Section>
             <Section className="recipe-form-section">
                 <RecipeForm submitNewRecipe={this.submitNewRecipe} />
@@ -43,7 +48,9 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getUserRecipes: () => dispatch(fetchUserRecipes()),
-        submitNewRecipe: (recipeObj) => dispatch(submitNewRecipeToDB(recipeObj))
+        submitNewRecipe: (recipeObj) => dispatch(submitNewRecipeToDB(recipeObj)),
+        addUserRecipe: (recipe_id) => dispatch(addUserRecipe(recipe_id)),
+        deleteUserRecipe: (recipe_id) => dispatch(deleteUserRecipe(recipe_id))
     }
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchForm from '../components/SearchForm';
 import SearchResultsContainer from './SearchResultsContainer';
+import {Section} from 'react-bulma-components';
 
 
 class SearchContainer extends Component{
@@ -22,9 +23,17 @@ class SearchContainer extends Component{
     
 
     render(){
-        return(<>
-            {this.state.resultsDisplay ? <SearchResultsContainer addRecipeToDay={this.props.addRecipeToDay}showSearchForm={this.showSearchForm}/> : <SearchForm getSearchResults={this.props.getSearchResults} showSearchResults={this.showSearchResults}/>}
-            </>
+        return(<Section className="search-container">
+            {this.state.resultsDisplay ? 
+            <SearchResultsContainer addRecipeToDay={this.props.addRecipeToDay} 
+            showSearchForm={this.showSearchForm}
+            userRecipeObjs={this.props.userRecipeObjs}
+            addUserRecipe={this.props.addUserRecipe}
+            deleteUserRecipe={this.props.deleteUserRecipe}
+            /> : <SearchForm 
+            getSearchResults={this.props.getSearchResults} 
+            showSearchResults={this.showSearchResults}/>}
+            </Section>
             )
     }
 }

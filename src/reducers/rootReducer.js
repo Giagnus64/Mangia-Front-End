@@ -45,6 +45,18 @@ const rootReducer = (state = defaultState, action) => {
 
         case "ADD_SEARCH_RESULTS":
             return { ...state, fetching: false, search_results: action.search_results }
+
+        case "ADD_USER_RECIPE_TO_DB":
+            return { ...state,  }
+
+        case "ADD_USER_RECIPE_TO_STORE":
+            return { ...state,  user_recipes: [...state.user_recipes, action.recipeToAdd] }
+
+        case "DELETE_USER_RECIPE_FROM_DB":
+            return { ...state }
+
+        case "DELETE_USER_RECIPE_FROM_STORE":
+            return { ...state, user_recipes: state.user_recipes.filter((recipe) => recipe.id !== action.recipeToDelete) }
             
         default:
            return state;

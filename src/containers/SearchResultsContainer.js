@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import RecipeCard from '../components/RecipeCard';
 import AddMealModal from '../components/AddMealModal'
 import { connect } from 'react-redux';
-import { Section, Button, Heading, Modal } from 'react-bulma-components';
+import { Section, Button, Heading, Modal, Loader } from 'react-bulma-components';
 
 class SearchResultsContainer extends Component {
     state = {
@@ -15,13 +15,36 @@ class SearchResultsContainer extends Component {
         this.props.showSearchForm();
     }
 
-    checkFavorited = () => {
+    checkFavorited = (id) => {
+        const recipeObj = this.props.userRecipeObjs.filter((userRecipeObj) => {
+            if (userRecipeObj.recipe_id === id) {
+                return true
+            }
+        })
+        if(recipeObj.length !== 0){
+            return recipeObj[0].user_recipe_id
+        } else{
+            return false
+        }
+        
 
+    }
+
+    displayLoading = () => {
+        return (<Loader style={{ width: 200, height: 200, border: '4px solid blue', borderTopColor: 'transparent', borderRightColor: 'transparent' }} />)
     }
 
     displayResults = () => {
        return this.props.search_results.map((search_result) => {
-            return <RecipeCard openModal={this.openModal} recipe={search_result} key={search_result.id} isFavorited={true} parentPage={"searchResults"}/>
+            return <RecipeCard 
+            openModal={this.openModal} 
+            recipe={search_result} 
+            key={search_result.id} 
+            userRecipeId={this.checkFavorited(search_result.id)} 
+            parentPage={"searchResults"}
+            addUserRecipe={this.props.addUserRecipe}
+            deleteUserRecipe={this.props.deleteUserRecipe}
+            />
         })
     }
     openModal = (recipe_id) => {
@@ -40,11 +63,9 @@ class SearchResultsContainer extends Component {
     render(){
         return(
         <Section className="search-results-container">
-           <Section className="search-results-cards">{this.displayResults()}</Section>
+           <Section className="search-results-cards">{this.props.fetching ? this.displayLoading() : this.displayResults() }</Section>
             <Section className="search-results-buttons">
                 <Button.Group>
-                    <Button>Previous Page</Button>
-                    <Button>Next Page</Button>
                     <Button onClick={this.handleNewSearch}>New Search</Button>
                 </Button.Group>
             </Section>

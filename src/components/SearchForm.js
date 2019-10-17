@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Section, Button, Heading } from 'react-bulma-components'
+import { Form, Box, Button, Heading } from 'react-bulma-components'
 const { Field, Control, Label, Input } = Form;
 
 class SearchForm extends Component{
@@ -23,16 +23,15 @@ class SearchForm extends Component{
     }
     render(){
         return (
-        <Section className="search-form">
+        <Box className="search-form">
             <Heading>Search Recipes By Ingredient</Heading>
             <Field>
-                <Label>Ingredient</Label>
                 <Control>
                     <Input name="ingredient" value={this.state.ingredient} placeholder="Rice, Chicken..." onChange={this.changeInput} />
                 </Control>
             </Field>
             <Button onClick={this.handleClick}>Search Ingredients</Button>
-        </Section>
+        </Box>
 
         )
     }

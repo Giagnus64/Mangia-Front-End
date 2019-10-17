@@ -8,6 +8,7 @@ import { faHeart as heartReg } from '@fortawesome/free-regular-svg-icons'
 
 
 const RecipeCard = (props) => {
+
     
     const checkInstructions = () => {
         if(props.recipe.instructions){
@@ -15,7 +16,7 @@ const RecipeCard = (props) => {
                 <Content className={"has-text-centered"}>{props.recipe.instructions}</Content>
             )
         } else{
-            return (<Content className={"has-text-centered"}><a href="props.recipe.page_url">See Instructions Here</a></Content>)
+            return (<Content className={"has-text-centered"}><a target="_blank" rel="noopener noreferrer" href={props.recipe.page_url}>See Instructions Here</a></Content>)
         }
     }
     const getColor = () => {
@@ -28,19 +29,30 @@ const RecipeCard = (props) => {
     }
     const getButtons = () => {
         if (props.parentPage === "recipe_page"){
-            return (<></>)
+            if(props.recipe.author === localStorage.username){
+                return (<Button className="user-recipes-recipe-card-update-button">Update Meal</Button>)
+            } else{
+                return (<></>)
+            }
+            
         } else{
             return (<Button onClick={() => props.openModal(props.recipe.id)}className="search-results-recipe-card-button">Add Meal</Button>)
         }
     }
     const getIcon = () => {
-        if(props.isFavorited){
+        if(props.userRecipeId){
             return heartSolid;
         } else{
             return heartReg;
         }
     }
-
+    const heartClick = () => {
+        if(props.userRecipeId){
+           props.deleteUserRecipe(props.userRecipeId)
+        } else{
+            props.addUserRecipe(props.recipe.id)
+        }
+    }
 
     return(
         <Card className="recipe-card" backgroundColor={getColor()}>
@@ -50,12 +62,13 @@ const RecipeCard = (props) => {
             <Card.Content>
                     {checkInstructions()}
             </Card.Content>  
-            <div className={"icon"}>
-                <Icon icon="heart">
+            <div className="recipe-card-buttons">
+                <Icon onClick={heartClick} icon="heart">
                     <FontAwesomeIcon icon={getIcon()}/>
                 </Icon>
+                {getButtons()}
             </div> 
-            {getButtons()}
+            
         </Card>
     )
 }
