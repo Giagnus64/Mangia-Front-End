@@ -28,8 +28,6 @@ class SearchContainer extends Component{
             <SearchResultsContainer addRecipeToDay={this.props.addRecipeToDay} 
             showSearchForm={this.showSearchForm}
             userRecipeObjs={this.props.userRecipeObjs}
-            addUserRecipe={this.props.addUserRecipe}
-            deleteUserRecipe={this.props.deleteUserRecipe}
             /> : <SearchForm 
             getSearchResults={this.props.getSearchResults} 
             showSearchResults={this.showSearchResults}/>}

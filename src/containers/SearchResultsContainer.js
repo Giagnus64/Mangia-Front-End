@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addUserRecipe, deleteUserRecipe } from "../actions/userRecipeActions";
 import RecipeCard from '../components/RecipeCard';
 import AddMealModal from '../components/AddMealModal'
-import { connect } from 'react-redux';
 import { Section, Button, Heading, Modal, Loader } from 'react-bulma-components';
 
 class SearchResultsContainer extends Component {
@@ -19,6 +20,8 @@ class SearchResultsContainer extends Component {
         const recipeObj = this.props.userRecipeObjs.filter((userRecipeObj) => {
             if (userRecipeObj.recipe_id === id) {
                 return true
+            } else{
+                return false
             }
         })
         if(recipeObj.length !== 0){
@@ -47,6 +50,7 @@ class SearchResultsContainer extends Component {
             />
         })
     }
+    
     openModal = (recipe_id) => {
         this.setState({
             modalRecipe: recipe_id,
@@ -86,7 +90,8 @@ const mapStateToProps = (state, props) => {
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        
+        addUserRecipe: (recipe_id) => dispatch(addUserRecipe(recipe_id)),
+        deleteUserRecipe: (recipe_id) => dispatch(deleteUserRecipe(recipe_id))
     }
 }
 

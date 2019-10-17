@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DayCardContainer from './DayCardContainer';
-import fetchPlannedMeals from "../actions/fetchPlannedMeals";
-import fetchUserRecipes from "../actions/fetchUserRecipes";
-import deletePlannedMeal from "../actions/deletePlannedMeal";
-import addPlannedMeal from '../actions/addPlannedMeal';
-import searchByIngredient from '../actions/searchByIngredient';
+import {fetchUserRecipes} from "../actions/userRecipeActions";
+import {fetchPlannedMeals, addPlannedMeal, deletePlannedMeal} from "../actions/plannedMealActions";
+import {searchByIngredient} from '../actions/recipeActions';
 import SearchContainer from './SearchContainer';
-import addUserRecipe from '../actions/addUserRecipe';
-import deleteUserRecipe from '../actions/deleteUserRecipe'
+
 
 class WeekPage extends Component{
 
@@ -41,8 +38,6 @@ class WeekPage extends Component{
             addRecipeToDay={this.addRecipeToDay} 
             getSearchResults={this.props.getSearchResults} 
             userRecipeObjs={this.getUserRecipeObjs()}
-            addUserRecipe={this.props.addUserRecipe}
-            deleteUserRecipe={this.props.deleteUserRecipe}
             />
         <DayCardContainer 
             planned_meals={this.props.planned_meals} 
@@ -66,8 +61,6 @@ const mapDispatchToProps = (dispatch, props) => {
         deletePlannedMeal: (mealID) => dispatch(deletePlannedMeal(mealID)),
         addRecipeToDay: (mealObj) => dispatch(addPlannedMeal(mealObj)),
         getSearchResults: (search_query) => dispatch(searchByIngredient(search_query)),
-        addUserRecipe: (recipe_id) => dispatch(addUserRecipe(recipe_id)),
-        deleteUserRecipe: (recipe_id) => dispatch(deleteUserRecipe(recipe_id))
     }
 }
 

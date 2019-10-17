@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import fetchUserRecipes from "../actions/fetchUserRecipes";
-import submitNewRecipeToDB from "../actions/submitNewRecipeToDB";
-import addUserRecipe from "../actions/addUserRecipe";
-import deleteUserRecipe from "../actions/deleteUserRecipe";
+import {fetchUserRecipes, addUserRecipe, deleteUserRecipe} from "../actions/userRecipeActions";
+import {submitNewRecipeToDB} from "../actions/recipeActions";
 import UserRecipeCardContainer from './UserRecipeCardContainer';
 import { Section } from "react-bulma-components";
 import RecipeForm from "../components/RecipeForm";
