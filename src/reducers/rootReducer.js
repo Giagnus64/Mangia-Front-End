@@ -1,11 +1,12 @@
 const defaultState = {
     token: '',
-    user_id: '1',
-    username: 'bob',
+    user_id: '',
+    username: '',
     user_recipes: [], 
     planned_meals: [],
     fetching: false,
     search_results: [],
+    errors: [],
 }
 
 const rootReducer = (state = defaultState, action) => {
@@ -57,6 +58,21 @@ const rootReducer = (state = defaultState, action) => {
 
         case "DELETE_USER_RECIPE_FROM_STORE":
             return { ...state, user_recipes: state.user_recipes.filter((recipe) => recipe.id !== action.recipeToDelete) }
+
+        case "LOGIN_USER_TOKEN":
+            return { ...state }
+
+        case "CREATE_USER_TOKEN":
+            return { ...state }
+
+        case "LOGIN_USER_STATE":
+            return { ...state, token: action.loginCreds.token, user_id: action.loginCreds.id, username: action.loginCreds.username, errors: [] }
+
+        case "LOGIN_ERROR":
+            return { ...state, errors: action.errors }
+
+        case "LOGOUT_USER":
+            return { ...state, errors: action.errors }
             
         default:
            return state;
