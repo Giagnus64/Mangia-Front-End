@@ -15,7 +15,7 @@ function App(props) {
   
   return (
     <>
-    <NavigationBar logout={props.logoutUser}/>
+    <NavigationBar logoutUser={props.logoutUser}/>
       <Switch>
         <Route
         path='/login'

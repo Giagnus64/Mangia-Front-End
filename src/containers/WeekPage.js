@@ -12,11 +12,10 @@ class WeekPage extends Component{
     componentDidMount() {
       this.props.getPlannedMeals(); 
       this.props.getUserRecipes();
-      localStorage.setItem('user_id', 1)
     }
 
     addRecipeToDay = (mealObj) =>  {
-        mealObj.user_id = this.props.user_id
+        mealObj.user_id = localStorage.user_id
         this.props.addRecipeToDay(mealObj);
     }
 

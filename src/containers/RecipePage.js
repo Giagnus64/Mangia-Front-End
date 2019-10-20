@@ -16,8 +16,8 @@ class RecipePage extends Component{
     }
 
     submitNewRecipe = (recipeObj) => {
-        recipeObj.user_id  = this.props.user_id;
-        recipeObj.recipe.author = this.props.username
+        recipeObj.user_id  = localStorage.user_id;
+        recipeObj.recipe.author = localStorage.username
         this.props.submitNewRecipe(recipeObj)
     }
 

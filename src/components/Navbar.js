@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bulma-components';
+import { Navbar, Heading } from 'react-bulma-components';
+import { NavLink } from 'react-router-dom'
 
 class NavigationBar extends Component {
 
@@ -23,6 +24,14 @@ class NavigationBar extends Component {
         }
     }
 
+    
+    handleClick = (e, logout = false) => {
+        if(logout){
+            this.props.logoutUser();
+        }
+        this.toggleNav();
+    }
+
     render(){
         return(
         <Navbar
@@ -32,23 +41,32 @@ class NavigationBar extends Component {
             transparent={true}
         >
             <Navbar.Brand>
-                <Navbar.Item renderAs="a" href="#">
-                    <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28" />
+                <Navbar.Item renderAs="div">
+                    <Heading>Mangia</Heading>
                 </Navbar.Item>
                 <Navbar.Burger onClick={this.toggleNav}/>
             </Navbar.Brand>
-            {this.getWelcomeMessage()}
             <Navbar.Menu >
+                    {this.getWelcomeMessage()}
                 <Navbar.Container position="end">
-                    <Navbar.Item hoverable dropdown href="#">
+                    <Navbar.Item hoverable dropdown>
                         <Navbar.Link arrowless={false}>Menu</Navbar.Link>
                         <Navbar.Dropdown className="is-right">
-                                <Navbar.Item hoverable href="#">
-                                    Plan Meals
-                                </Navbar.Item>
-                                <Navbar.Item hoverable href="#">
-                                    Manage Recipes
-                                </Navbar.Item>
+                                <NavLink to="/home">
+                                    <Navbar.Item renderAs="div" hoverable onClick={this.handleClick}>
+                                        Plan Meals
+                                    </Navbar.Item>
+                                </NavLink>
+                                <NavLink to="/recipes">
+                                    <Navbar.Item renderAs="div" hoverable onClick={this.handleClick}>
+                                        Manage Recipes
+                                    </Navbar.Item>
+                                </NavLink>
+                                <NavLink to="/login">
+                                    <Navbar.Item renderAs="div" hoverable onClick={(e) => this.handleClick(e, true) }>
+                                        Logout
+                                    </Navbar.Item>
+                                </NavLink>
                         </Navbar.Dropdown>
                     </Navbar.Item>
                 </Navbar.Container>
