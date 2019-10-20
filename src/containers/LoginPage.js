@@ -15,7 +15,7 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-
+    return {}
 }
 const mapDispatchToProps = (dispatch, props) => {
     return {

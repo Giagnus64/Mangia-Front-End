@@ -3,7 +3,7 @@ const URL = 'http://localhost:3000/planned_meals'
 const fetchPlannedMeals = () => {
     return (dispatch) => {
         dispatch({ type: 'GET_PLANNED_MEALS_REQUEST' });
-        fetch(`${URL}/${localStorage.user_id}`)
+        fetch(`${URL}/${localStorage.user_id}`, { headers: { 'Authorization': localStorage.token } })
             .then(res => res.json())
             .then(data => dispatch({ type: 'ADD_PLANNED_MEALS', planned_meals: data }))
     };
@@ -16,7 +16,8 @@ const addPlannedMeal = (mealObj) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': localStorage.token
             },
             body: JSON.stringify({
                 ...mealObj
@@ -41,7 +42,8 @@ const deletePlannedMeal = (mealID) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': localStorage.token
             },
         })
             .then(res => res.json())

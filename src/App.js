@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import "./App.scss";
 import { connect } from 'react-redux';
-import { loginUser, logoutUser, createUser } from './actions/loginActions';
+import { logoutUser } from './actions/loginActions';
 import RecipePage from "./containers/RecipePage";
 import NavigationBar from "./components/Navbar";
 import WeekPage from './containers/WeekPage';
@@ -21,36 +21,30 @@ function App(props) {
         path='/login'
         exact
         render={
-          (props) => props.token ? 
+          (props) => localStorage.token ? 
           <Redirect to='/home' /> : 
-          <LoginPage loginUser={props.loginUser} createUser={props.createUser} />}
-      />
+           <LoginPage />}
+        />
         <Route
           path='/home'
           exact
-          render={() => <WeekPage/>}
-          
-        />
-      {/* <Route
-        path='/profile'
-        exact
-        render={() => this.state.token ? <Profile currentUser={this.state.currentUser} editUserInfo={this.editUserInfo} deleteUser={this.deleteUser} /> : <Redirect to='/login' />}
-      /> */}
-      <Route
+          render={() => localStorage.token ? <WeekPage /> : <LoginPage/>}
+          />
+        <Route
         path='/recipes'
         exact
-        render={() => <RecipePage/>}
-        // render={() => localStorage.token ? <RecipePage /> : <Redirect to='/login' />}
-      />
-      <Route
+        render={() => localStorage.token ? 
+          <RecipePage /> : <Redirect to='/login'/>}
+          />
+        <Route
         exact
         path='/'
-        render={() => <Redirect to='/login' />}
-      />
-
-      <Route component={NotFound} />
-    </Switch>
-      
+        render={() => localStorage.token ?
+           <Redirect to="/home"/> : 
+           <Redirect to='/login'/>}
+        />
+        <Route component={NotFound} />
+      </Switch>
       <div className="footer"></div>
     </>
   );
@@ -61,9 +55,7 @@ const mapStateToProps = (state, props) => {
 }
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser),
-    createUser: (creds) => dispatch(createUser(creds))
   }
 }
 

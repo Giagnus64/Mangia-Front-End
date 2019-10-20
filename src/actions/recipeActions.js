@@ -3,7 +3,7 @@ const URL = `http://localhost:3000/recipes/`;
 const searchByIngredient = (search_query) => {
     return (dispatch) => {
         dispatch({ type: 'SEARCH_RECIPE_DATABASE' });
-        fetch(`${URL}${search_query}`)
+        fetch(`${URL}${search_query}`, { headers: { 'Authorization': localStorage.token } })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -19,7 +19,8 @@ const submitNewRecipeToDB = (recipeObj) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': localStorage.token
             },
             body: JSON.stringify({
                 ...recipeObj

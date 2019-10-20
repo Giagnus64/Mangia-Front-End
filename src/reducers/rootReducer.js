@@ -65,7 +65,7 @@ const rootReducer = (state = defaultState, action) => {
         case "CREATE_USER_TOKEN":
             return { ...state }
 
-        case "LOGIN_USER_STATE":
+        case "LOGIN_USER_STORE":
             return { ...state, token: action.loginCreds.token, user_id: action.loginCreds.id, username: action.loginCreds.username, errors: [] }
 
         case "LOGIN_ERROR":

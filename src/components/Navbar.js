@@ -11,6 +11,17 @@ class NavigationBar extends Component {
             navOpen: !this.state.navOpen
         })
     }
+    getWelcomeMessage = () => {
+        if(localStorage.username){
+            return (
+            <Navbar.Container >
+                <Navbar.Item renderAs="div">
+                {`Welcome, ${localStorage.username}`}
+                </Navbar.Item>
+            </Navbar.Container>
+            )
+        }
+    }
 
     render(){
         return(
@@ -26,12 +37,8 @@ class NavigationBar extends Component {
                 </Navbar.Item>
                 <Navbar.Burger onClick={this.toggleNav}/>
             </Navbar.Brand>
+            {this.getWelcomeMessage()}
             <Navbar.Menu >
-                <Navbar.Container >
-                    <Navbar.Item href="#">
-                        Welcome, user!
-                    </Navbar.Item>
-                </Navbar.Container>
                 <Navbar.Container position="end">
                     <Navbar.Item hoverable dropdown href="#">
                         <Navbar.Link arrowless={false}>Menu</Navbar.Link>
