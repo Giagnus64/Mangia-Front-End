@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addUserRecipe, deleteUserRecipe } from "../actions/userRecipeActions";
 import RecipeCard from '../components/RecipeCard';
 import AddMealModal from '../components/AddMealModal'
-import { Section, Button, Heading, Modal, Loader } from 'react-bulma-components';
+import { Section, Button, Modal, Loader } from 'react-bulma-components';
 
 class SearchResultsContainer extends Component {
     state = {
@@ -40,6 +40,7 @@ class SearchResultsContainer extends Component {
     displayResults = () => {
        return this.props.search_results.map((search_result) => {
             return <RecipeCard 
+            openRecipeModal={this.props.openRecipeModal}
             openModal={this.openModal} 
             recipe={search_result} 
             key={search_result.id} 
@@ -74,7 +75,7 @@ class SearchResultsContainer extends Component {
                 </Button.Group>
             </Section>
                 <Modal show={this.state.modalOpen} onClose={this.closeModal}>
-                    <AddMealModal recipeId={this.state.modalRecipe} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal} />
+                    <AddMealModal today={this.props.today} recipeId={this.state.modalRecipe} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal} />
                 </Modal>
         </Section>
            

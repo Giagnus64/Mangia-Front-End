@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Box, Button, Heading } from 'react-bulma-components'
+import { Form,  Button, Heading} from 'react-bulma-components'
 const { Field, Control, Label, Input} = Form;
 
 class LoginForm extends Component {
@@ -15,7 +15,9 @@ class LoginForm extends Component {
     }
 
     render(){
-        return(<>
+        return(
+            <div className='login-form-fields'>
+                <Heading className="has-text-centered">Login</Heading>
                 <Field>
                     <Control>
                         <Label>Username</Label>
@@ -28,11 +30,11 @@ class LoginForm extends Component {
                         <Input name="password" type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange}/>
                     </Control>
                 </Field>
-                <Button.Group>
+                <Button.Group className="has-text-centered">
                     <Button onClick={() => this.props.loginUser(this.state)}>Login</Button>
                     <Button onClick={() => this.props.createUser(this.state)}>Register</Button>
                 </Button.Group>
-                </>
+            </div>
         )
     }
 

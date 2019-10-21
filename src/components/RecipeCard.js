@@ -13,10 +13,10 @@ const RecipeCard = (props) => {
     const checkInstructions = () => {
         if(props.recipe.instructions){
             return (
-                <Content className={"has-text-centered"}>{props.recipe.instructions}</Content>
+                <Content className={"has-text-centered"}><Button onClick={() => props.openRecipeModal(props.recipe)}>See Instructions</Button></Content>
             )
         } else{
-            return (<Content className={"has-text-centered"}><a target="_blank" rel="noopener noreferrer" href={props.recipe.page_url}>See Instructions Here</a></Content>)
+            return (<Content className={"has-text-centered"}><a target="_blank" rel="noopener noreferrer" href={props.recipe.page_url}><Button>See Instructions</Button></a></Content>)
         }
     }
     const getColor = () => {

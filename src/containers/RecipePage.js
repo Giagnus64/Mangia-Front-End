@@ -3,13 +3,10 @@ import {connect} from 'react-redux';
 import {fetchUserRecipes, addUserRecipe, deleteUserRecipe} from "../actions/userRecipeActions";
 import {submitNewRecipeToDB} from "../actions/recipeActions";
 import UserRecipeCardContainer from './UserRecipeCardContainer';
-import { Section } from "react-bulma-components";
+import { Section, Heading, Box } from "react-bulma-components";
 import RecipeForm from "../components/RecipeForm";
 
 class RecipePage extends Component{
-    state = {
-
-    }
 
     componentDidMount = () => {
         this.props.getUserRecipes()
@@ -25,10 +22,14 @@ class RecipePage extends Component{
         return(
             <>
             <Section className="recipe-card-section">
+                <Box>
+                <Heading className="has-text-centered">Your Saved Recipes</Heading>
                 <UserRecipeCardContainer 
+                openRecipeModal={this.props.openRecipeModal}
                 user_recipes={this.props.user_recipes}
                 addUserRecipe={this.props.addUserRecipe}
                 deleteUserRecipe={this.props.deleteUserRecipe} />
+                </Box>
             </Section>
             <Section className="recipe-form-section">
                 <RecipeForm submitNewRecipe={this.submitNewRecipe} />

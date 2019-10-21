@@ -6,7 +6,7 @@ import {fetchPlannedMeals, addPlannedMeal, deletePlannedMeal} from "../actions/p
 import {searchByIngredient} from '../actions/recipeActions';
 import SearchContainer from './SearchContainer';
 
-
+let today = new Date(2019, 9, 12);
 class WeekPage extends Component{
 
     componentDidMount() {
@@ -33,12 +33,15 @@ class WeekPage extends Component{
 
     render(){
         return (<>
-        <SearchContainer 
+        <SearchContainer
+            openRecipeModal={this.props.openRecipeModal} 
+            today={today}
             addRecipeToDay={this.addRecipeToDay} 
             getSearchResults={this.props.getSearchResults} 
             userRecipeObjs={this.getUserRecipeObjs()}
             />
         <DayCardContainer 
+            today={today}
             planned_meals={this.props.planned_meals} 
             deletePlannedMeal={this.props.deletePlannedMeal} 
             userRecipeOptions={this.userRecipeOptions()} 

@@ -17,7 +17,7 @@ class NavigationBar extends Component {
             return (
             <Navbar.Container >
                 <Navbar.Item renderAs="div">
-                {`Welcome, ${localStorage.username}`}
+                {`Welcome, ${localStorage.username}!`}
                 </Navbar.Item>
             </Navbar.Container>
             )
@@ -46,7 +46,7 @@ class NavigationBar extends Component {
                 </Navbar.Item>
                 <Navbar.Burger onClick={this.toggleNav}/>
             </Navbar.Brand>
-            <Navbar.Menu >
+            <Navbar.Menu>
                     {this.getWelcomeMessage()}
                 <Navbar.Container position="end">
                     <Navbar.Item hoverable dropdown>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import DateForm from "../components/DateForm";
 import { Form, Modal, Section, Button, Heading } from 'react-bulma-components'
-const { Field, Control, Label, Select } = Form;
+const { Field, Label, Select } = Form;
 
 
 class AddMealModal extends Component {
@@ -31,7 +31,7 @@ class AddMealModal extends Component {
         if(this.props.date){
             return `Add Meal To ${this.props.date.toDateString()}`
         } else{
-            return `Add Meal`
+            return `Add Meal To Day`
         }
         
     }
@@ -39,15 +39,13 @@ class AddMealModal extends Component {
         if(this.props.userRecipeOptions){
             return (<Field>
                 <Label>Select Recipe</Label>
-                <Control>
                     <Select name="recipe_id" value={this.state.recipe_id} onChange={this.changeSelect}>
                         <option key="p" value="">Select a Recipe</option>
                         {this.props.userRecipeOptions}
                     </Select>
-                </Control>
             </Field>)
         } else{
-            return (<label>Date:<DateForm updateEnteredDate={this.updateEnteredDate} /></label>)
+            return (<label><DateForm id="date-form-modal" today={this.props.today} updateEnteredDate={this.updateEnteredDate} /></label>)
         }
     }
     updateEnteredDate = (day) => {
@@ -59,20 +57,17 @@ class AddMealModal extends Component {
  
 
     render(){
-        console.log(this.props, this.props.date)
         return (
                 <Modal.Content>
-                    <Section style={{backgroundColor:'white'}}>
-                    <Heading>{this.getTitle()}</Heading>
-                    {this.getProperField()}
+                    <Section style={{backgroundColor:'white', textAlign: 'center'}}>
+                    <Heading className="has-text-centered">{this.getTitle()}</Heading>
                     <Field>
                         <Label>Select Meal Time</Label>
-                        <Control>
                             <Select name="meal" value={this.state.meal} onChange={this.changeSelect}>
                                 {this.mealOptions()}
                             </Select>
-                        </Control>
                     </Field>
+                    {this.getProperField()}
                     <Button 
                     onClick={() => {
                         this.props.addRecipeToDay(this.state)

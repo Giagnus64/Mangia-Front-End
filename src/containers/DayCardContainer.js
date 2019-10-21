@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import { format, addDays } from 'date-fns'
 import DayCard from "../components/DayCard"
 
-import { Button, Modal } from 'react-bulma-components';
+import { Button, Modal, Section, Heading } from 'react-bulma-components';
 import AddMealModal from "../components/AddMealModal";
 import DateForm from "../components/DateForm";
 
 
 
-//fix for pushing out
-let today = new Date(2019,9,12)
-
 class DayCardContainer extends Component {
 
     state = {
-        startDate: today,
+        startDate: this.props.today,
         dateEntered: '',
         modalOpen: false,
         modalDate: '',
@@ -65,19 +62,19 @@ class DayCardContainer extends Component {
 
 
     render () {
-        //console.log(this.props)
  
         return (
-            <>
-            <div className="day-picker-container">
-            <DateForm today={today} updateEnteredDate={this.updateEnteredDate} />
-            <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
-            </div>
-            <div className="day-card-container">{this.getDayCards()}</div>
-            <Modal show={this.state.modalOpen} onClose={this.closeModal}>
-                    <AddMealModal date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal}/>
-            </Modal>
-            </>
+            <Section>
+                <Heading className="has-text-centered">Your Meal Plans</Heading>
+                <div className="day-picker-container">
+                    <DateForm today={this.props.today} updateEnteredDate={this.updateEnteredDate} />
+                    <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
+                </div>
+                <div className="day-card-container">{this.getDayCards()}</div>
+                <Modal show={this.state.modalOpen} onClose={this.closeModal}>
+                        <AddMealModal  today={this.props.today} date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal}/>
+                </Modal>
+            </Section>
         )
         
     }

@@ -4,12 +4,16 @@ import { Container } from "react-bulma-components";
 
 
 
+
 export default class UserRecipeCardContainer extends Component {
     
+    
+   
 
     getRecipeCards = () => {
        return this.props.user_recipes.map((recipeObj) => {
-            return <RecipeCard 
+           return <RecipeCard 
+            openRecipeModal={this.props.openRecipeModal} 
             recipe={recipeObj.recipe} 
             key={recipeObj.id} 
             parentPage={"recipe_page"} 
@@ -22,10 +26,11 @@ export default class UserRecipeCardContainer extends Component {
     
     
     render(){
-        return(
+        return(<>
             <Container fluid className={"is-flex recipe-card-container"}>
             {this.getRecipeCards()}
             </Container>
+            </>
         )
     }
 }

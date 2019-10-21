@@ -25,7 +25,10 @@ class SearchContainer extends Component{
     render(){
         return(<Section className="search-container">
             {this.state.resultsDisplay ? 
-            <SearchResultsContainer addRecipeToDay={this.props.addRecipeToDay} 
+            <SearchResultsContainer 
+            openRecipeModal={this.props.openRecipeModal} 
+            today={this.props.today} 
+            addRecipeToDay={this.props.addRecipeToDay} 
             showSearchForm={this.showSearchForm}
             userRecipeObjs={this.props.userRecipeObjs}
             /> : <SearchForm 

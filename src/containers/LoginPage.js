@@ -7,7 +7,7 @@ class LoginPage extends Component {
     
     render(){
         return (
-            <Box>
+            <Box className="login-container">
                 <LoginForm loginUser={this.props.loginUser} createUser={this.props.createUser} />
             </Box>
         )
