@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DateForm from "../components/DateForm";
-import { Form, Modal, Section, Button, Heading } from 'react-bulma-components'
+import CalendarForm from './CalendarForm';
+import { Form, Modal, Section, Button, Heading, Columns } from 'react-bulma-components'
 const { Field, Label, Select } = Form;
 
 
@@ -45,7 +45,7 @@ class AddMealModal extends Component {
                     </Select>
             </Field>)
         } else{
-            return (<label><DateForm id="date-form-modal" today={this.props.today} updateEnteredDate={this.updateEnteredDate} /></label>)
+            return (<label><CalendarForm id="date-form-modal" today={this.props.today} updateEnteredDate={this.updateEnteredDate} /></label>)
         }
     }
     updateEnteredDate = (day) => {
@@ -59,15 +59,21 @@ class AddMealModal extends Component {
     render(){
         return (
                 <Modal.Content>
-                    <Section style={{backgroundColor:'white', textAlign: 'center'}}>
+                    <Section className="modal-section" style={{backgroundColor:'white', textAlign: 'center'}}>
                     <Heading className="has-text-centered">{this.getTitle()}</Heading>
-                    <Field>
-                        <Label>Select Meal Time</Label>
-                            <Select name="meal" value={this.state.meal} onChange={this.changeSelect}>
-                                {this.mealOptions()}
-                            </Select>
-                    </Field>
-                    {this.getProperField()}
+                    <Columns>
+                        <Columns.Column size={6}>
+                            <Field>
+                                <Label>Select Meal Time</Label>
+                                    <Select name="meal" value={this.state.meal} onChange={this.changeSelect}>
+                                        {this.mealOptions()}
+                                    </Select>
+                            </Field>
+                        </Columns.Column>
+                        <Columns.Column size={6}>
+                            {this.getProperField()}
+                        </Columns.Column>
+                    </Columns>
                     <Button 
                     onClick={() => {
                         this.props.addRecipeToDay(this.state)

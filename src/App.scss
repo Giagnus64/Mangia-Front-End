@@ -78,6 +78,7 @@ progress.progress{
 }
 svg{
     cursor: pointer;
+    size:100px;
     &:hover{
         & path{
             fill: red;
@@ -175,8 +176,25 @@ svg{
     padding:.5rem;
 }
 .modal-content {
-    min-width: 50%;
+    min-width: 65%;
 }
 .modal-content section{
-    min-width: 50%;
+    min-width: 70%;
+}
+.recipe-details{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+}
+.modal-section{
+    padding: 1.5rem;
+    border-radius:10px;
+    min-height:50%;
+}
+.section{
+    padding-bottom: .5rem;
+    max-width: 80%;
+    margin: 0 auto;
+}
+.content ul{
 }

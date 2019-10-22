@@ -6,7 +6,6 @@ const searchByIngredient = (search_query) => {
         fetch(`${URL}${search_query}`, { headers: { 'Authorization': localStorage.token } })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 dispatch({ type: 'ADD_SEARCH_RESULTS', search_results: data })
             })
     };
@@ -28,7 +27,6 @@ const submitNewRecipeToDB = (recipeObj) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 dispatch({ type: 'ADD_NEW_RECIPE', newRecipe: data })
             })
     };
