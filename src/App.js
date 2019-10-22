@@ -39,6 +39,7 @@ class App extends Component {
     return (
       <>
         <NavigationBar logoutUser={this.props.logoutUser} />
+        <div className="page-container">
         <Switch>
           <Route
             path='/login'
@@ -71,6 +72,7 @@ class App extends Component {
         <Modal show={this.state.modalOpen} onClose={this.closeModal}>
           <RecipeModal recipe={this.state.modalRecipe} />
         </Modal>
+        </div>
         <MyFooter />
       </>
     )

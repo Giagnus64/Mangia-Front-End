@@ -1,3 +1,11 @@
+
+body{
+    height: 94vh;
+    position:relative;
+}
+.page-container{
+    min-height: 90vh;
+}
 .recipe-card{
     min-width: 22%;
     max-width: 22%;
@@ -15,18 +23,23 @@
     align-items: center;
 }
 
+.recipe-form{
+    min-width: 800px;
+}
 .recipe-form-container{
     display:flex;
     flex-direction:row;
     justify-content:space-around;
+    flex-wrap: wrap;
     margin-bottom: 20px;
+    width: 100%;
 }
 .recipe-form-inputs{
     width: 70%;
 }
 
 .recipe-form-img-upload{
-    width: 25%
+    min-width: 25%
 }
 
 .recipe-form-title{
@@ -124,6 +137,9 @@ svg{
     padding: 1rem;
     display:flex;
 }
+.search-results-buttons{
+    margin-top: 10px;
+}
 
 .search-container{
     width: 80%;
@@ -152,6 +168,7 @@ svg{
     width:60%;
     margin: 20px auto;
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items:center;
 }
@@ -163,6 +180,7 @@ svg{
 .footer{
     padding: .5rem;
     background-color: skyblue;
+    
 }
 .footer-icon{
     margin-left: 20px;
@@ -177,9 +195,12 @@ svg{
 }
 .modal-content {
     min-width: 65%;
+    min-height: 70%;
+    
 }
 .modal-content section{
     min-width: 70%;
+    height: 70%;
 }
 .recipe-details{
     display:flex;
@@ -196,5 +217,16 @@ svg{
     max-width: 80%;
     margin: 0 auto;
 }
-.content ul{
+.message-box{
+    margin-top: 20px;
+}
+.page-container{
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center; 
+}
+.recipe-details{
+    border: 1px solid black;
+    overflow: scroll;
 }

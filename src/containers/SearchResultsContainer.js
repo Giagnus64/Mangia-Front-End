@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addUserRecipe, deleteUserRecipe } from "../actions/userRecipeActions";
 import RecipeCard from '../components/RecipeCard';
 import AddMealModal from '../components/AddMealModal'
-import { Section, Button, Modal, Loader } from 'react-bulma-components';
+import { Button, Modal, Loader, Box } from 'react-bulma-components';
 
 class SearchResultsContainer extends Component {
     state = {
@@ -67,17 +67,18 @@ class SearchResultsContainer extends Component {
 
     render(){
         return(
-        <Section className="search-results-container">
-           <Section className="search-results-cards">{this.props.fetching ? this.displayLoading() : this.displayResults() }</Section>
-            <Section className="search-results-buttons">
+        <Box className="search-results-container">
+           <div className="search-results-cards">{this.props.fetching ? this.displayLoading() : this.displayResults() }
+           </div>
+            <div className="search-results-buttons">
                 <Button.Group>
                     <Button onClick={this.handleNewSearch}>New Search</Button>
                 </Button.Group>
-            </Section>
+            </div>
                 <Modal show={this.state.modalOpen} onClose={this.closeModal}>
                     <AddMealModal today={this.props.today} recipeId={this.state.modalRecipe} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal} />
                 </Modal>
-        </Section>
+        </Box>
            
             
         )

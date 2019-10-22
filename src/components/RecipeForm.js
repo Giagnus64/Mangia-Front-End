@@ -107,7 +107,7 @@ export default class RecipeForm extends Component {
                 <Heading className="has-text-centered recipe-form-title">Submit New Recipe</Heading>
                 <div className="recipe-form-container">
                     <div className="recipe-form-img-upload">
-                        <Heading className="has-text-centered" size={3}>Upload Recipe Image</Heading>
+                        <Heading className="has-text-centered" size={5}>Upload Recipe Image</Heading>
                         <div className="recipe-form-img-box">{this.getImage()}</div>
                         <div className="row">
                             <progress value={this.state.progress} max="100" className="progress" />
