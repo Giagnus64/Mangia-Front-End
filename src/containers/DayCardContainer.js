@@ -22,7 +22,7 @@ class DayCardContainer extends Component {
             dateEntered: date,
         })
     }
-
+    //change day cards
     updateStartDate = () => {
         if(this.state.dateEntered !== ''){
             this.setState({
