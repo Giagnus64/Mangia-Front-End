@@ -1,4 +1,4 @@
-const URL = `http://localhost:3000/recipes/`;
+const URL = `https://mangia-api.herokuapp.com/recipes/`;
 
 const searchByIngredient = (search_query) => {
     return (dispatch) => {

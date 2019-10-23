@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000/user_recipes'
+const URL = 'https://mangia-api.herokuapp.com/user_recipes'
 
 const fetchUserRecipes = () => {
     return (dispatch) => {
@@ -26,7 +26,6 @@ const addUserRecipe = (recipeID) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.recipe) {
                     dispatch({ type: 'ADD_USER_RECIPE_TO_STORE', recipeToAdd: data })
                 }
@@ -47,7 +46,6 @@ const deleteUserRecipe = (recipeID) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.message) {
                     dispatch({ type: 'DELETE_USER_RECIPE_FROM_STORE', recipeToDelete: recipeID })
                 }
