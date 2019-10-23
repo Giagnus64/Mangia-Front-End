@@ -14,7 +14,7 @@ import { Modal, Section, Heading, Media, Image, Content, Columns } from 'react-b
 
      return (
      <Modal.Content className="recipe-modal-content">
-         <Section className="modal-section recipe-modal" style={{ backgroundColor: 'white', textAlign: 'center' }}>
+             <Section className="modal-section recipe-modal" style={{ backgroundColor: ' #EAEAED;', textAlign: 'center' }}>
              <Heading className="has-text-centered">{props.recipe.title}</Heading>
              <Columns className="columns-recipe-modal">
                 <Columns.Column  size={3}>

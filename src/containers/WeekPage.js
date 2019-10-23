@@ -41,6 +41,7 @@ class WeekPage extends Component{
             userRecipeObjs={this.getUserRecipeObjs()}
             />
         <DayCardContainer 
+            openRecipeModal={this.props.openRecipeModal} 
             today={today}
             planned_meals={this.props.planned_meals} 
             deletePlannedMeal={this.props.deletePlannedMeal} 

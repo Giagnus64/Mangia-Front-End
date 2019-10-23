@@ -11,11 +11,14 @@ const DayCard = (props) => {
     const formatDate = () => {
         return props.cardDate.toDateString();
     }
+    const handleLinkClick = (recipe) => {
+        props.openRecipeModal(recipe);
+    }
     const getMeals = (mealString) => {
        const filtered =  props.meals.filter((meal) => {return meal.meal === mealString})
        return filtered.map((meal) => {
            return (<div className="meal-container" key={meal.id}>
-               <a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url}>{meal.recipe.title} 
+               <a target="_blank" rel="noopener noreferrer" href={meal.recipe.page_url} onClick={() => handleLinkClick(meal.recipe)}>{meal.recipe.title} 
                </a>
                <FontAwesomeIcon className="delete-icon-planned-meal"
                icon={faTimesCircle}

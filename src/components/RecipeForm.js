@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
     instructions: '',
     image_url: null,
     user_submitted: true,
-    ingredients: '',
+    ingredients: ['', ''],
     author: ''
 }
 
@@ -19,6 +19,43 @@ export default class RecipeForm extends Component {
     state = {
        ...DEFAULT_STATE
     }
+
+
+    generateIngredientInputs = () => {
+        return this.state.ingredients.map((ingredient, index) => {
+            return (<Field key={index}>
+                <Label>{`Ingredient ${index + 1}`}</Label>
+                <Control>
+                    <Input name="Ingredient" placeholder="4 chicken breasts"
+                        value={this.state.ingredients[index]} data-index={index} onChange={this.changeIngredientInput} />
+                </Control>
+                        </Field >)
+        })
+    }
+
+    changeIngredientInput = (e) => {
+        const newIngredients = [...this.state.ingredients]
+        newIngredients[e.target.dataset.index] = e.target.value
+        this.setState({
+            ingredients: [...newIngredients]
+        })
+    }
+
+    addIngredientInput = () => {
+        this.setState({
+            ingredients: [...this.state.ingredients, '']
+        })
+    }
+    removeIngredientInput = () => {
+        if(this.state.ingredients.length !== 1){
+            const newIngredients = [...this.state.ingredients]
+            newIngredients.pop();
+            this.setState({
+                ingredients: [...newIngredients]
+            })
+        }
+    }
+
     //************************ FORM SUBMISSION */
     handleRecipeSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +77,7 @@ export default class RecipeForm extends Component {
     }
     getNewRecipeObject = () => {
         const newObj = {
-            ingredients: this.splitString(),
+            ingredients: this.state.ingredients,
             recipe: {
                 title: this.state.title,
                 instructions: this.state.instructions,
@@ -55,9 +92,6 @@ export default class RecipeForm extends Component {
         this.setState({
             [evt.target.name]: evt.target.value
         })
-    }
-    splitString = () => {
-        return this.state.ingredients.split("\n")
     }
 //************************* IMAGE SUBMISSION */
     customOnChangeHandler = (event) => {
@@ -107,7 +141,7 @@ export default class RecipeForm extends Component {
                 <Heading className="has-text-centered recipe-form-title">Submit New Recipe</Heading>
                 <div className="recipe-form-container">
                     <div className="recipe-form-img-upload">
-                        <Heading className="has-text-centered" size={5}>Upload Recipe Image</Heading>
+                        <Heading className="has-text-centered" size={4}>Upload Recipe Image</Heading>
                         <div className="recipe-form-img-box">{this.getImage()}</div>
                         <div className="row">
                             <progress value={this.state.progress} max="100" className="progress" />
@@ -137,12 +171,12 @@ export default class RecipeForm extends Component {
                                     value={this.state.title} onChange={this.handleTextChange} />
                             </Control>
                         </Field>
-                        <Field>
-                        <Label>Ingredients</Label>
-                        <Control>
-                            <Textarea name="ingredients" value={this.state.ingredients} onChange={this.handleTextChange} placeholder="Put each ingredient on its own line!" />
-                        </Control>
-                        </Field >   
+                        {this.generateIngredientInputs()}
+                        <Button.Group>
+                            <Button onClick={this.addIngredientInput}>+</Button>
+                            <Button onClick={this.removeIngredientInput}>-</Button>
+                        </Button.Group>
+                        
                         <Field>
                         <Label>Instructions</Label>
                         <Control>

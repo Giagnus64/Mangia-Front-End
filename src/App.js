@@ -52,7 +52,7 @@ class App extends Component {
           <Route
             path='/home'
             exact
-            render={() => localStorage.token ? <WeekPage openRecipeModal={this.openModal} /> : <LoginPage />}
+            render={() => localStorage.token ? <WeekPage openRecipeModal={this.openRecipeModal} /> : <LoginPage />}
           />
           <Route
             path='/recipes'

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { format, addDays } from 'date-fns'
 import DayCard from "../components/DayCard"
 
-import { Button, Modal, Section, Heading } from 'react-bulma-components';
+import { Button, Modal, Section, Heading, Box } from 'react-bulma-components';
 import AddMealModal from "../components/AddMealModal";
 import DateForm from "../components/DateForm";
 
@@ -43,7 +43,7 @@ class DayCardContainer extends Component {
         for(let i = 0; i < 7; i++){
             let cardDate = addDays(this.state.startDate, i)
             let meals = this.checkPlannedMeals(format(cardDate, "yyyy-MM-dd"));
-            cardArray.push(<DayCard cardDate={cardDate} meals={meals} key={i} deletePlannedMeal={this.props.deletePlannedMeal} openModal={this.openModal}/>)
+            cardArray.push(<DayCard openRecipeModal={this.props.openRecipeModal} cardDate={cardDate} meals={meals} key={i} deletePlannedMeal={this.props.deletePlannedMeal} openModal={this.openModal}/>)
         }
         return cardArray;
     }
@@ -65,15 +65,18 @@ class DayCardContainer extends Component {
  
         return (
             <Section>
+                <Box>
                 <Heading className="has-text-centered">Your Meal Plans</Heading>
                 <div className="day-picker-container">
                     <DateForm today={this.props.today} updateEnteredDate={this.updateEnteredDate} />
                     <Button onClick={this.updateStartDate}color="info">Select Start Date</Button>
                 </div>
+                
                 <div className="day-card-container">{this.getDayCards()}</div>
                 <Modal show={this.state.modalOpen} onClose={this.closeModal}>
                         <AddMealModal  today={this.props.today} date={this.state.modalDate} userRecipeOptions={this.props.userRecipeOptions} addRecipeToDay={this.props.addRecipeToDay} closeModal={this.closeModal}/>
                 </Modal>
+                </Box>
             </Section>
         )
         

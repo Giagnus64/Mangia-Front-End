@@ -21,10 +21,10 @@ const RecipeCard = (props) => {
     }
     const getColor = () => {
         if(props.recipe.user_submitted){
-            return "info"
+            return "#67DAE5"
         }
         else {
-            return "primary"
+            return "#94FBAB"
         }
     }
     const getButtons = () => {
@@ -50,7 +50,7 @@ const RecipeCard = (props) => {
     }
 
     return(
-        <Card className="recipe-card" backgroundColor={getColor()}>
+        <Card className="recipe-card" style={{backgroundColor: getColor()}}>
             <Card.Image className={"card-img"} size="3by2" src={props.recipe.image_url} alt={`Photo of ${props.recipe.title}`}></Card.Image>
             <Heading className={"has-text-centered"} size={5}>{props.recipe.title}</Heading>
             <Heading className={"has-text-centered"} subtitle size={6}>Submitted by: {props.recipe.author}</Heading> 

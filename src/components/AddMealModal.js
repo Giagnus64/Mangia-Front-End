@@ -59,7 +59,7 @@ class AddMealModal extends Component {
     render(){
         return (
                 <Modal.Content>
-                    <Section className="modal-section" style={{backgroundColor:'white', textAlign: 'center'}}>
+                <Section className="modal-section" style={{ backgroundColor:'#EAEAED;', textAlign: 'center'}}>
                     <Heading className="has-text-centered">{this.getTitle()}</Heading>
                     <Columns>
                         <Columns.Column size={6}>

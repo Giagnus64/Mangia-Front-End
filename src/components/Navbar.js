@@ -35,7 +35,7 @@ class NavigationBar extends Component {
     render(){
         return(
         <Navbar
-            color="info"
+                style={{ backgroundColor: '#E8AEB7'}}
             fixed='top'
             active={this.state.navOpen}
             transparent={true}
