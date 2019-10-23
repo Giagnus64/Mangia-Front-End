@@ -13,11 +13,11 @@ import { Modal, Section, Heading, Media, Image, Content, Columns } from 'react-b
 
 
      return (
-     <Modal.Content>
-         <Section className="modal-section" style={{ backgroundColor: 'white', textAlign: 'center' }}>
+     <Modal.Content className="recipe-modal-content">
+         <Section className="modal-section recipe-modal" style={{ backgroundColor: 'white', textAlign: 'center' }}>
              <Heading className="has-text-centered">{props.recipe.title}</Heading>
-             <Columns>
-                <Columns.Column size={3}>
+             <Columns className="columns-recipe-modal">
+                <Columns.Column  size={3}>
                     <Media> 
                         <Media.Item className="recipe-modal-image-container">
                             <Image rounded={true} size={"1by1"} alt="100X100" src={props.recipe.image_url}/>
@@ -32,7 +32,7 @@ import { Modal, Section, Heading, Media, Image, Content, Columns } from 'react-b
                         </div>
                     </Content>
                 </Columns.Column>
-                <Columns.Column className="recipe-details" size={6}>
+                <Columns.Column className="recipe-details">
                     <Content>
                         <h3>Instructions</h3>
                         <p>{props.recipe.instructions}</p>

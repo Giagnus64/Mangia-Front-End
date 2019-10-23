@@ -199,8 +199,9 @@ svg{
     
 }
 .modal-content section{
-    min-width: 70%;
-    height: 70%;
+    min-width: 100%;
+    min-height: 60%;
+    max-height: 100%;
 }
 .recipe-details{
     display:flex;
@@ -228,5 +229,19 @@ svg{
 }
 .recipe-details{
     border: 1px solid black;
-    overflow: scroll;
+}
+.recipe-details.column{
+    margin-left: 20px;
+}
+.recipe-modal{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+}
+.recipe-modal-content{
+    min-width:80%;
+}
+.columns-recipe-modal{
+    width: 100%;
 }
