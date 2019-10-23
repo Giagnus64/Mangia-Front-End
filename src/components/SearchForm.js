@@ -15,10 +15,13 @@ class SearchForm extends Component{
         })
     }
     handleClick = () => {
-        //call fetch function
-        this.props.getSearchResults(this.state.ingredient);
-        //set results state
-        this.props.showSearchResults();
+
+        if(this.state.ingredient !== ''){
+            //call fetch function
+            this.props.getSearchResults(this.state.ingredient);
+            //set results state
+            this.props.showSearchResults();
+        }
 
     }
     render(){

@@ -6,7 +6,7 @@ import {fetchPlannedMeals, addPlannedMeal, deletePlannedMeal} from "../actions/p
 import {searchByIngredient} from '../actions/recipeActions';
 import SearchContainer from './SearchContainer';
 
-let today = new Date(2019, 9, 12);
+let today = new Date();
 class WeekPage extends Component{
 
     componentDidMount() {

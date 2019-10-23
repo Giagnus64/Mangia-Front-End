@@ -24,10 +24,12 @@ class DayCardContainer extends Component {
     }
 
     updateStartDate = () => {
-        this.setState({
-            startDate: this.state.dateEntered,
-            dateEntered: '',
-        })
+        if(this.state.dateEntered !== ''){
+            this.setState({
+                startDate: this.state.dateEntered,
+                dateEntered: '',
+            })
+        }
     }
 
     //check for meals on that date

@@ -8,8 +8,8 @@ class AddMealModal extends Component {
     
     state = {
        meal: '',
-       recipe_id: this.props.recipeId ? this.props.recipeId : null,
-       date: this.props.date ? this.props.date.toISOString() : null
+       recipe_id: this.props.recipeId ? this.props.recipeId : '',
+       date: this.props.date ? this.props.date.toISOString() : ''
     }
 
     changeSelect = (e) => {
@@ -53,6 +53,20 @@ class AddMealModal extends Component {
             date: day.toISOString()
         })
     }
+    validateForm = () => {
+        if(this.state.meal !== '' && this.state.recipe_id !== '' && this.state.date !== ''){
+            return true
+        } else{
+            return false
+        }
+    }
+
+    handleSubmit = () => {
+        if(this.validateForm()){
+            this.props.addRecipeToDay(this.state)
+            this.props.closeModal()
+        }
+    }
 
  
 
@@ -74,13 +88,7 @@ class AddMealModal extends Component {
                             {this.getProperField()}
                         </Columns.Column>
                     </Columns>
-                    <Button 
-                    onClick={() => {
-                        this.props.addRecipeToDay(this.state)
-                        this.props.closeModal()
-                    }
-                    }>
-                        Submit</Button>
+                    <Button onClick={this.handleSubmit}>Submit</Button>
                     </Section>
                     
                 </Modal.Content>

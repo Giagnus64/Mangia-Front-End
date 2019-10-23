@@ -57,22 +57,42 @@ export default class RecipeForm extends Component {
     }
 
     //************************ FORM SUBMISSION */
+    validateIngredients = () => {
+        const emptySlots = this.state.ingredients.filter((ingredient) => ingredient === '')
+        if(emptySlots.length > 0){
+            return false
+        } else{
+            return true
+        }
+    }
+
+    validateForm = () => {
+        
+        if (this.state.title !== '' && this.state.instructions !== '' && this.validateIngredients()){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
     handleRecipeSubmit = (e) => {
         e.preventDefault();
         let confirmed;
         let recipeObj;
-        if(!this.state.image_url){
-            confirmed = window.confirm("You have not uploaded an image! Would you still like to submit your recipe? (A default image will be used.")
-        } else {
-            confirmed = true;
-        }
-
-        if(confirmed){
-            recipeObj = this.getNewRecipeObject();
-            this.props.submitNewRecipe(recipeObj)
-            this.setState({
-                ...DEFAULT_STATE
-            })
+        if(this.validateForm()){
+            if(!this.state.image_url){
+                confirmed = window.confirm("You have not uploaded an image! Would you still like to submit your recipe? (A default image will be used.")
+            } else {
+                confirmed = true;
+            }
+    
+            if(confirmed){
+                recipeObj = this.getNewRecipeObject();
+                this.props.submitNewRecipe(recipeObj)
+                this.setState({
+                    ...DEFAULT_STATE
+                })
+            }
         }
     }
     getNewRecipeObject = () => {
