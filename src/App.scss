@@ -27,12 +27,10 @@ body{
     justify-content:center;
     align-items: center;
 }
-.recipe-form-section{
+.recipe-form-section, .recipe-card-section{
     min-width: 80%;
 }
-.recipe-form{
-    
-}
+
 .recipe-form-container{
     display:flex;
     flex-direction:row;

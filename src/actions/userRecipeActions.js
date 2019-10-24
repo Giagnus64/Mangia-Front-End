@@ -1,4 +1,4 @@
-const URL = 'https://mangia-api.herokuapp.com/user_recipes'
+const URL = 'http://localhost:3000/user_recipes'
 
 const fetchUserRecipes = () => {
     return (dispatch) => {
@@ -12,6 +12,7 @@ const fetchUserRecipes = () => {
 const addUserRecipe = (recipeID) => {
     return (dispatch) => {
         dispatch({ type: 'ADD_USER_RECIPE_TO_DB' });
+        console.log('adding user recipe to db')
         fetch(URL, {
             method: 'POST',
             headers: {

@@ -1,4 +1,4 @@
-const URL = 'https://mangia-api.herokuapp.com/planned_meals'
+const URL = 'http://localhost:3000/planned_meals'
 
 const fetchPlannedMeals = () => {
     return (dispatch) => {

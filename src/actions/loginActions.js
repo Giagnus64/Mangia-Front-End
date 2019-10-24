@@ -1,7 +1,7 @@
 const loginUser = (creds) => {
     return (dispatch) => {
         dispatch({ type: 'LOGIN_USER_TOKEN' });
-        fetch('https://mangia-api.herokuapp.com/login', {
+        fetch('http://localhost:3000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const loginUser = (creds) => {
 const createUser = (creds) => {
     return (dispatch) => {
         dispatch({ type: 'CREATE_USER_TOKEN' });
-        fetch("https://mangia-api.herokuapp.com/users", {
+        fetch("http://localhost:3000/users", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

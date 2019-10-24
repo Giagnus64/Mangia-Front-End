@@ -59,11 +59,10 @@ const RecipeCard = (props) => {
             </Card.Content>  
             <div className="recipe-card-buttons">
                 <Icon onClick={heartClick} icon="heart">
-                    <FontAwesomeIcon onClick={heartClick} icon={getIcon()}/>
+                    <FontAwesomeIcon icon={getIcon()}/>
                 </Icon>
                 {getButtons()}
             </div> 
-            
         </Card>
     )
 }
