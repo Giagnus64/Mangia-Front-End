@@ -104,7 +104,7 @@ export default class RecipeForm extends Component {
                 user_submitted: true
             }
         }
-        if(this.state.image_url) {newObj.image_url = this.state.image_url} 
+        if(this.state.image_url) {newObj.recipe.image_url = this.state.image_url} 
         return newObj
     }
 

@@ -203,17 +203,22 @@ svg{
 .modal-content {
     min-width: 65%;
     min-height: 70%;
-    
+    background-color: #EAEAED;
 }
 .modal-content section{
     min-width: 100%;
     min-height: 70%;
     max-height: 100%;
+
 }
 .recipe-details{
     display:flex;
     flex-direction:column;
     justify-content: space-evenly;
+}
+.recipe-details.column{
+    overflow:scroll;
+    max-height:100%;
 }
 .modal-section{
     padding: 1.5rem;
@@ -253,10 +258,15 @@ svg{
 }
 .columns-recipe-modal{
     width: 100%;
+    max-height:100%;
 }
 .box{
     background-color: #EAEAED;
 }
 .navbar{
     box-shadow: 0px 15px 20px -18px rgba(0,0,0,0.77);
+}
+.recipe-modal{
+    position:relative;
+    box-sizing:border-box;
 }

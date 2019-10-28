@@ -11,17 +11,19 @@ export default class UserRecipeCardContainer extends Component {
    
 
     getRecipeCards = () => {
-       return this.props.user_recipes.map((recipeObj) => {
-           return <RecipeCard 
-            openRecipeModal={this.props.openRecipeModal} 
-            recipe={recipeObj.recipe} 
-            key={recipeObj.id} 
-            parentPage={"recipe_page"} 
-            userRecipeId={recipeObj.id}
-            addUserRecipe={this.props.addUserRecipe}
-            deleteUserRecipe={this.props.deleteUserRecipe}
-            />
-        })
+        if(this.props.user_recipes.length !== 0){
+            return this.props.user_recipes.map((recipeObj) => {
+                return <RecipeCard 
+                 openRecipeModal={this.props.openRecipeModal} 
+                 recipe={recipeObj.recipe} 
+                 key={recipeObj.id} 
+                 parentPage={"recipe_page"} 
+                 userRecipeId={recipeObj.id}
+                 addUserRecipe={this.props.addUserRecipe}
+                 deleteUserRecipe={this.props.deleteUserRecipe}
+                 />
+             })
+        }
     }
     
     
