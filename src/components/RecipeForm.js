@@ -81,7 +81,7 @@ export default class RecipeForm extends Component {
         let recipeObj;
         if(this.validateForm()){
             if(!this.state.image_url){
-                confirmed = window.confirm("You have not uploaded an image! Would you still like to submit your recipe? (A default image will be used.")
+                confirmed = window.confirm("You have not uploaded an image! Would you still like to submit your recipe? (A default image will be used.)")
             } else {
                 confirmed = true;
             }

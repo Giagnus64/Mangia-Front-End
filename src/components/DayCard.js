@@ -6,14 +6,17 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 const DayCard = (props) => {
 
 
-    //console.log(props)
     
     const formatDate = () => {
         return props.cardDate.toDateString();
     }
+    
     const handleLinkClick = (recipe) => {
-        props.openRecipeModal(recipe);
+        if(recipe.instructions){
+            props.openRecipeModal(recipe);
+        }
     }
+
     const getMeals = (mealString) => {
        const filtered =  props.meals.filter((meal) => {return meal.meal === mealString})
        return filtered.map((meal) => {
