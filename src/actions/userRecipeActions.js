@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000/user_recipes'
+const URL = 'https://mangia-api.herokuapp.com/user_recipes'
 
 const fetchUserRecipes = () => {
     return (dispatch) => {
