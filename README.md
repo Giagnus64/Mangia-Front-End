@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mangia
+A web application designed to help users plan and keep track of meals and recipes.  
 
-## Available Scripts
+## Features
+Users are able to plan meals based on the recipes that they keep track of. Users can submit their own recipes or select recipes from an API search or other user-submitted recipes. Once a user has bookmarked a recipe, they can assign it to a meal time on a specific day. 
 
-In the project directory, you can run:
+## Demo
+Live here: [Mangia](https://mangia-client.herokuapp.com/login)
+Demo video coming soon!
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Built with
+ *Back-end*
+- [Ruby on Rails](https://rubyonrails.org) - Server Framework
+- [PostgreSQL](https://www.postgresql.org) - Database
+- [Firebase](https://firebase.google.com) -Image Storage
+- [Edamam Recipe API](https://developer.edamam.com) - Recipe Search API
+- Auth using [JWT](https://jwt.io) tokens and [bcrypt ] (https://rubygems.org/gems/bcrypt/versions/3.1.12) encryption
+- [Rest-Client](https://github.com/rest-client/rest-client) - HTTP request library
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+*Front-end*
+- [React](https://reactjs.org/docs/getting-started.html) - Front-end Framework
+- [React Redux](https://react-redux.js.org) - 
+- [Bulma](https://bulma.io) - CSS framework with [Sass] formatted custom CSS(https://sass-lang.com)
+- [react-bulma-components - npm](https://www.npmjs.com/package/react-bulma-components/v/3.0.1-1)
+- [Font Awesome Icons](https://github.com/FortAwesome/react-fontawesome)
+- [date-fns - JavaScript date utility library](https://date-fns.org)
+- [react-day-picker - Flexible date picker component for React](https://react-day-picker.js.org)
+- [react-firebase-file-uploader - npm](https://www.npmjs.com/package/react-firebase-file-uploader)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Installation
+WARNING: API search & firebase image uploads will NOT work since API keys are stored locally 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+*Requirements*
+ - [Node.js](https://nodejs.org/en/)
+ - [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+ - [PostgreSQL](https://www.postgresql.org)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+In your clone/fork of this repo: 
+```bash
+npm install - #installs all dependencies
+npm start - #runs a development server 
+```
+The instructions for the back-end of this app are [here](https://github.com/Giagnus64/Mangia-API). You'll need to clone/fork both repos. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
