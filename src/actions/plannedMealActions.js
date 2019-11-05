@@ -1,4 +1,5 @@
-const URL = 'https://mangia-api.herokuapp.com/planned_meals'
+import {getUrl} from './DBInfo';
+const URL = `${getUrl()}/planned_meals`;
 
 const fetchPlannedMeals = () => {
     return (dispatch) => {

@@ -190,8 +190,8 @@ svg{
     
 }
 .footer-icon{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .subtitle:not(:last-child){
     margin-bottom: .5rem;
@@ -269,4 +269,23 @@ svg{
 .recipe-modal{
     position:relative;
     box-sizing:border-box;
+}
+.my-footer svg{
+    &:hover{
+        & path{
+            fill:white;
+        }
+    }
+}
+.name-link{
+    text-decoration:underline;
+}
+.my-footer a{
+    color: inherit;
+    &:visited {
+        color:inherit
+    }
+    &:hover{
+        color:white;
+    }
 }

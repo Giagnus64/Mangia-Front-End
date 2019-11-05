@@ -1,7 +1,9 @@
+import {getUrl} from './DBInfo';
+
 const loginUser = (creds) => {
     return (dispatch) => {
         dispatch({ type: 'LOGIN_USER_TOKEN' });
-        fetch('https://mangia-api.herokuapp.com/login', {
+        fetch(`${getUrl()}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ const loginUser = (creds) => {
 const createUser = (creds) => {
     return (dispatch) => {
         dispatch({ type: 'CREATE_USER_TOKEN' });
-        fetch("https://mangia-api.herokuapp.com/users", {
+        fetch(`${getUrl()}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

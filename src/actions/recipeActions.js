@@ -1,4 +1,5 @@
-const URL = `https://mangia-api.herokuapp.com/recipes/`;
+import {getUrl} from './DBInfo';
+const URL = `${getUrl()}/recipes/`;
 
 const searchByIngredient = (search_query) => {
     return (dispatch) => {
