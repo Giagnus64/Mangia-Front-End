@@ -11,7 +11,7 @@ body{
     min-height: 90vh;
 }
 .recipe-card{
-    min-width: 22%;
+    min-width:190px;
     max-width: 22%;
     margin: 10px;
     box-shadow: 0px 0px 15px -8px rgba(0,0,0,0.75);
@@ -28,7 +28,11 @@ body{
     justify-content:center;
     align-items: center;
 }
-.recipe-form-section, .recipe-card-section{
+section.recipe-form-section{
+    min-width:80%;
+    margin-bottom: 3rem;
+}
+.recipe-card-section{
     min-width: 80%;
 }
 
@@ -52,7 +56,7 @@ body{
     width:100%
 }
 .recipe-form-img-box{
-    width:300px;
+    width:90%;
     height:220px;
     text-align:center;
     margin:0 auto;
