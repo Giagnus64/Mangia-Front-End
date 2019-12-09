@@ -5,8 +5,7 @@ A web application designed to help users plan and keep track of meals and recipe
 Users are able to plan meals based on the recipes that they keep track of. Users can submit their own recipes or select recipes from an API search or other user-submitted recipes. Once a user has bookmarked a recipe, they can assign it to a meal time on a specific day. 
 
 ## Demo
-Live here: [Mangia](https://mangia-client.herokuapp.com/login)
-Demo video coming soon!
+[Live](https://mangia-client.herokuapp.com/)(User: test Pass:123)| [Video](https://youtu.be/Oh4hvCiwSOI)
 
 
 ## Built with
