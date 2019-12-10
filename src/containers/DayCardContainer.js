@@ -66,7 +66,7 @@ class DayCardContainer extends Component {
     render () {
  
         return (
-            <Section>
+            <Section className="day-card-section">
                 <Box>
                 <Heading className="has-text-centered">Your Meal Plans</Heading>
                 <div className="day-picker-container">
